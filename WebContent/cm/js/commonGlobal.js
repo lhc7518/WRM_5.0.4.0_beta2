@@ -19,7 +19,7 @@ requires("uiplugin.popup");
 
 var gcm = {
 	// 서버 통신 서비스 호출을 위한 Context Path
-	CONTEXT_PATH : "http://localhost:8080",
+	CONTEXT_PATH : "",
 
 	// 서버 통신 서비스 호출을 위한 Service Url (Context Path 이하 경로)
 	SERVICE_URL : "",
