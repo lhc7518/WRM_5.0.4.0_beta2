@@ -397,14 +397,7 @@ gcm.sbm = {};
 gcm.sbm._preSubmitFunction = function(sbmObj) {
 	if (sbmObj.action.indexOf(gcm.CONTEXT_PATH) === -1) {
 		sbmObj.action = gcm.CONTEXT_PATH + sbmObj.action;
-		
-		
-		
 	}
-	
-//	console.log("sbmObj.action1=>"+sbmObj.action); 
-//	sbmObj.action = "http://localhost:8080"+sbmObj.action;
-//	console.log("sbmObj.action2=>"+sbmObj.action); 	
 };
 
 
