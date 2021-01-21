@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_vertical_guides="" meta_horizontal_guides="">
+		<w2:type>DEFAULT</w2:type>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="startColumn" name="name1" dataType="text"></w2:column>
+						<w2:column id="endColumn" name="name2" dataType="text"></w2:column>
+						<w2:column id="titleColumn" name="name3" dataType="text"></w2:column>
+						<w2:column id="idColumn" name="name4" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection></w2:workflowCollection>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+        
+		var jsonData=[
+            {"startColumn":"20200909", "endColumn":"20200909", "titleColumn":"Seminar A", "idColumn":"id1"}
+            ,{"startColumn":"20200916", "endColumn":"20200921", "titleColumn":"Seminar B", "idColumn":"id2"}
+            ,{"startColumn":"20200911", "endColumn":"20200911", "titleColumn":"Meeting", "idColumn":"id3"}
+            ,{"startColumn":"20200913", "endColumn":"20200913", "titleColumn":"Airport Pick-up", "idColumn":"id6"}
+            ,{"startColumn":"20200922", "endColumn":"20200926", "titleColumn":"Visit to Parents", "idColumn":"id5"}
+            ,{"startColumn":"20200924", "endColumn":"20200924", "titleColumn":"B-day", "idColumn":"id4"}
+        ];
+        
+        dataList1.setJSON( jsonData );
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};		
+	
+	scwin.trigger1_onclick = function(e) {
+		scheduleCalendar1.addSchedule({"startColumn":"20200930", "endColumn":"20201004", "titleColumn":"CHUSOK", "idColumn":"id7"});		
+	};
+	
+	
+	
+	scwin.scheduleCalendar1_onaddschedule = function(rowIndex) {
+		alert("Added!");
+	};
+	
+	scwin.scheduleCalendar1_onmoveschedule = function(rowIndex) {
+		alert("Moved!");
+	};
+	
+	
+	]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+		<xf:trigger type="button" style="width: 80px;height: 23px;margin-bottom:10px;margin:100px;margin-top:20px;" id="trigger1"
+			ev:onclick="scwin.trigger1_onclick">
+			<xf:label><![CDATA[Add]]></xf:label>
+		</xf:trigger>
+		<w2:scheduleCalendar endColumn="endColumn" defaultDate="" editable="true" selectable="false" headerRightBtn="true"
+			ioFormat="yyyyMMdd" titleColumn="titleColumn" startColumn="startColumn" dataList="data:dataList1"
+			style="height:500px;margin:100px;margin-top:0px;" id="scheduleCalendar1" lang="ko" headerLeftBtn="true" idColumn="idColumn"
+			headerTitle="true" ev:onclick="" version="" ev:onaddschedule="scwin.scheduleCalendar1_onaddschedule"
+			ev:onmoveschedule="scwin.scheduleCalendar1_onmoveschedule">
+		</w2:scheduleCalendar>
+	</body>
+</html>

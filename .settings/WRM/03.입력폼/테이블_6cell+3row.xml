@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:buildDate/>
+        <w2:userPalette defaultIcon="mix.png" desc=""/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+        </xf:model>
+        <script type="text/javascript"><![CDATA[ ]]></script>
+    </head>
+    <body>
+		<xf:group class="w2tb tb" id="" style="width:100%;" tagname="table">
+			<w2:attributes>
+				<w2:summary>
+				</w2:summary>
+</w2:attributes>
+			<xf:group tagname="colgroup">
+				<xf:group style="width:120px;" tagname="col">
+				</xf:group>
+				<xf:group style="" tagname="col">
+				</xf:group>
+				<xf:group style="width:120px;" tagname="col">
+				</xf:group>
+				<xf:group style="" tagname="col">
+				</xf:group>
+				<xf:group style="width:120px;" tagname="col">
+				</xf:group>
+				<xf:group style="" tagname="col">
+				</xf:group>
+</xf:group>
+			<xf:group style="" tagname="tr">
+				<xf:group class="w2tb_th" style="" tagname="th">징수일자</xf:group>
+				<xf:group class="w2tb_td" style="" tagname="td">
+					<w2:inputCalendar calendarValueType="yearMonthDate" class="w2input_gp" focusOnDateSelect="false" footerDiv="false" id="" renderDiv="true" renderType="component" style="width: 120px;height: 22px;" weekStartsOn="0">
+</w2:inputCalendar>
+</xf:group>
+				<xf:group class="w2tb_th" style="" tagname="th">거래통합내역</xf:group>
+				<xf:group class="w2tb_td" style="" tagname="td">
+					<w2:span id="" label="1234567890" style="">
+					</w2:span>
+</xf:group>
+				<xf:group class="w2tb_th" style="" tagname="th">약정수수료</xf:group>
+				<xf:group class="w2tb_td" style="" tagname="td">
+					<xf:input id="" style="width: 80px;height: 20px;">
+					</xf:input>
+					<w2:anchor class="btn_tcm" id="" outerDiv="true" style="">
+						<xf:label>
+<![CDATA[환율]]></xf:label>
+</w2:anchor>
+</xf:group>
+</xf:group>
+			<xf:group style="" tagname="tr">
+				<xf:group class="w2tb_th" style="" tagname="th">당행계좌</xf:group>
+				<xf:group class="w2tb_td" style="" tagname="td">
+					<w2:attributes>
+						<w2:colspan>3</w2:colspan>
+						<w2:rowspan>1</w2:rowspan>
+</w2:attributes>
+					<xf:input id="" style="width: 200px;height: 20px;">
+					</xf:input>
+					<w2:anchor class="btn_tcm_sh_ic" id="" outerDiv="false" style="">
+						<xf:label>
+<![CDATA[검색]]></xf:label>
+</w2:anchor>
+</xf:group>
+				<xf:group class="w2tb_th" style="" tagname="th">입금금액</xf:group>
+				<xf:group class="w2tb_td" style="" tagname="td">
+					<xf:input id="" style="width: 80px;height: 20px;">
+					</xf:input>
+					<xf:input id="" style="width: 150px;height: 20px;">
+					</xf:input>
+					<w2:anchor class="btn_tcm" id="" outerDiv="true" style="">
+						<xf:label>
+<![CDATA[계산]]></xf:label>
+</w2:anchor>
+</xf:group>
+</xf:group>
+			<xf:group style="" tagname="tr">
+				<xf:group class="w2tb_th" style="" tagname="th">소멸가수금</xf:group>
+				<xf:group class="w2tb_td" style="" tagname="td">
+					<w2:attributes>
+						<w2:colspan>5</w2:colspan>
+</w2:attributes>
+					<xf:input id="" style="width: 80px;height: 20px;">
+					</xf:input>
+					<xf:input id="" style="width: 150px;height: 20px;">
+					</xf:input>
+					<w2:anchor class="btn_tcm" id="" outerDiv="true" style="">
+						<xf:label>
+<![CDATA[기수금]]></xf:label>
+</w2:anchor>
+					<w2:attributes>
+						<w2:colspan>3</w2:colspan>
+						<w2:rowspan>1</w2:rowspan>
+</w2:attributes>
+</xf:group>
+</xf:group>
+</xf:group>
+</body>
+</html>

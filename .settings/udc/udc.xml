@@ -1,0 +1,37 @@
+<WebSquare>
+    <components>
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <component category="Basic" company="" componentDesc="" defaultStyleClass="" developer="" disableicon="" display="udc_jumin" displaySrc="/cm/udc/udc_jumin.xml" height="21px" homepage="" htmlRender="" icon="" id="udc_jumin" namespaceURI="http://www.inswave.com/websquare" notSupportBrowser="" realType="udc_jumin" ttcComponent="false" ttcVersion="" udcComponent="true" visible="true" width="305px">
+            <properties>
+                <property bindparent="" default="" description="Component id" name="id" necessary="yes" type="string"/>
+                <property bindparent="" default="false" description="readOnly 여부" name="readOnly" necessary="no" type="combobox">
+                    <option name="true" value="true"/>
+                    <option name="false" value="false"/>
+                </property>
+                <property bindparent="" default="false" description="disabled 여부" name="disabled" necessary="no" type="combobox">
+                    <option name="true" value="true"/>
+                    <option name="false" value="false"/>
+                </property>
+                <property bindparent="" default="확인" description="버튼 label명" name="label" necessary="no" type="string"/>
+                <property bindparent="" default="-" description="delimeter" name="delimeter" necessary="no" type="string"/>
+            </properties>
+            <events>
+                <property description="값 변경 시 호출" name="onviewchange(flag, info, obj)" type="user"/>
+            </events>
+        </component>
+    </components>
+</WebSquare>

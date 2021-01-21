@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>DEFAULT</w2:type>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+	scwin.onpageload = function() {
+		scwin.wfTitleFavInit();
+	};
+	
+	scwin.onpageunload = function() {
+	
+	};
+	
+	scwin.wfTitleFavInit = function() {
+		var param = $p.parent().com.data.getParameter();
+		var menuInfoArr = [];
+		try {
+			scwin.setFavStatus(param.menuCode, param.favStatus);
+			scwin.setMenuNavi(param.menuCode, param.menuNm, param.menuType);
+		} catch (ex) {
+			wfTitleFav_grp_main.hide();
+		}
+	};
+	
+	scwin.setMenuNavi = function(menuCode, menuName, menuType) {
+		var naviArr, naviArrLen, naviStr, menuNm;  
+		try {
+			if ((typeof menuType !== "undefined") && (menuType === "SP")) {
+				naviStr = "샘플화면 > " + menuName;
+				menuNm = menuName;
+			} else {
+				naviArr = ($p.top().wfm_side.scwin.getMenuNavigation(menuCode)).split("%|%");
+				naviArrLen = parseInt(naviArr.length / 2);
+				naviStr = "";
+				menuNm = naviArr[0];
+				for (var i = naviArrLen; i >= 0; i--) {
+					naviStr += naviArr[i * 2];
+		
+					if (i < naviArrLen && i > 0) {
+						naviStr += " > ";
+					}
+				}
+			}
+		} catch (ex) {
+			naviStr = "";
+			menuNm = menuName;
+		} finally {
+			tbx_navi.setValue(naviStr);
+			txt_h1.setValue(menuNm);
+		}
+	};
+	
+	scwin.setFavStatus = function(menuCode, favStatus) {
+		btn_fav.setUserData("t_menuCode", menuCode);
+		btn_fav.setUserData("t_favStatus", favStatus);
+	
+		if (favStatus == "T") {
+			btn_fav.addClass("fav_on");
+		} else {
+			btn_fav.removeClass("fav_on");
+		}
+	};
+	
+	scwin.btn_fav_onclick = function() {
+		var menuCode = btn_fav.getUserData("t_menuCode");
+		var favStatus = btn_fav.getUserData("t_favStatus");
+	
+		$p.top().wfm_side.getWindow().scwin.updateFav(menuCode, favStatus);
+		
+		if (favStatus == "T") {
+			favStatus = "F";
+		} else {
+			favStatus = "T";
+		}
+		scwin.setFavStatus(menuCode, favStatus);
+	};
+		
+	scwin.showScreenInfo = function() {
+		var pageUrl = $p.parent().$p.getFrame().getSrc();
+		com.win.alert("[" + txt_h1.getValue() + "] 페이지의 파일 경로는 다음과 같습니다.<br/>" + pageUrl);
+	};
+	
+	/**
+	 * 화면을 갱신한다.
+	 */
+	scwin.reload = function() { 
+		$p.parent().$p.reinitialize();
+	};
+	
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+		<xf:group id="" style="" class="pgtitlebox">
+			<xf:group id="" style="" class="wf_contNavi">
+				<w2:span id="tbx_navi" style="font-weight:bold;" label=""></w2:span>
+			</xf:group>
+			<xf:group id="wfTitleFav_grp_main" style="" class="wf_contHeader">
+				<w2:textbox id="txt_h1" style="" class="pg_tt mr5" label="" tagname="h1"></w2:textbox>
+				<w2:anchor id="btn_fav" style="" toolTip="즐겨찾기를 추가/해제합니다" ev:onclick="scwin.btn_fav_onclick" class="btn_fav" outerDiv="false">
+					<xf:label></xf:label>
+				</w2:anchor>
+				<w2:anchor id="btn_screenInfo" title="화면 정보" style="" ev:onclick="scwin.showScreenInfo" class="ico_help mr5" outerDiv="false">
+					<xf:label></xf:label>
+				</w2:anchor>
+				<w2:anchor id="btn_reload" title="화면 갱신" style="" ev:onclick="scwin.reload" class="ico_refresh mr5" outerDiv="false">
+					<xf:label></xf:label>
+				</w2:anchor>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:buildDate/>
+        <w2:userPalette defaultIcon="mix.png" desc="타이틀 페이지수 버튼"/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+        </xf:model>
+        <script type="text/javascript"><![CDATA[ ]]></script>
+    </head>
+    <body><xf:group class="defaultbox" id="" style="">
+	<w2:textbox class="df_tt" id="" label="타이틀" style="" tagname="h2">
+	</w2:textbox>
+	<xf:group class="fr" id="" style="">
+		<w2:span class="df_total num" id="" label="10" style="">
+		</w2:span>
+		<w2:span class="df_total" id="" label="/" style="">
+		</w2:span>
+		<w2:span class="df_total" id="" label="100" style="">
+		</w2:span>
+		<xf:group class="dpib" id="" style="">
+			<w2:anchor class="btn_gcm" clickEventElement="outerDiv" id="" outerDiv="true" style="">
+				<xf:label>
+<![CDATA[행추가]]></xf:label>
+</w2:anchor>
+			<w2:anchor class="btn_gcm" clickEventElement="outerDiv" href="" id="" outerDiv="true" style="">
+				<xf:label>
+<![CDATA[행삭제]]></xf:label>
+</w2:anchor>
+			<w2:anchor class="btn_upload" clickEventElement="outerDiv" id="" outerDiv="true" style="">
+				<xf:label>
+<![CDATA[엑셀]]></xf:label>
+</w2:anchor>
+			<w2:anchor class="btn_download" clickEventElement="outerDiv" id="" localeRef="" outerDiv="true" style="">
+				<xf:label>
+<![CDATA[엑셀]]></xf:label>
+</w2:anchor>
+</xf:group>
+</xf:group>
+</xf:group>
+</body>
+</html>

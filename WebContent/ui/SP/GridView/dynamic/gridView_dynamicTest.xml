@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection>
+				<w2:dataList id="dataList1" baseNode="list" style="" repeatNode="map">
+					<w2:columnInfo>
+						<w2:column id="col1" name="name1" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+		</xf:model>
+		<script type="javascript"><![CDATA[ 
+ 
+		var jsonData1 = [{"col0":"0","col1":"test","col2":"test","col3":"test"},{"col0":"1","col1":"test","col2":"test","col3":"test"}];
+        var jsonData2 = [{"data0":"000","data1":"AAA","data2":"aaa","data3":"aaa","data4":"aaa","data5":"aaa","data6":"aaa","data7":"aaa","data8":"aaa","data9":"aaa"}];
+ 
+        
+        //동적으로 datList 생성
+        function makeDataList(id, obj){      
+        	//if(WebSquare.util.getComponentById(id)!=undefined){
+			if($p.getComponentById(id)!=undefined){	
+        		$p.data.remove(id);
+        	}
+        	$p.data.create({
+				"id": id
+				, "type": "dataList"
+				, "option": {
+					"useData": false
+				  }
+				, "columnInfo":obj
+			});
+		}
+
+
+        //동적 gridView 생성 1 (그리드뷰.setGridStyle 이용) 
+        function setColumnID(obj){
+        //debugger;
+        	var column = {};
+        	var columnArr = [];
+        	var gridHeader ="", gridBody="";
+        	//json의 첫번째 데이터에서 컬럼의 id와 개수 정보 확
+        	for(var k in obj[0]){
+        		//dataList를 동적으로 만들기 위한 컬럼 정
+        		column = {};
+        		column["id"] = k;
+        		column["dataType"] = "text";
+        		columnArr.push(column);
+        		
+        		//gridView의 컬럼 정보 정의
+        		gridHeader	+= '<w2:column blockSelect="false" id="'+'h'+k+'" style="height:20px" inputType="text" width="70" value="'+k+'"></w2:column>';
+        		gridBody		+= '<w2:column blockSelect="false" id="'+k+'" style="height:20px" inputType="text" width="70"></w2:column>'
+        	}
+        	makeDataList("dataList1",columnArr);
+        	
+
+        	//gridView 정보 정의 
+        	//xml 형식을 정의 하면 <w2:gridView 에 xmlns:w2="http://www.inswave.com/websquare" xmlns:ev="http://www.w3.org/2001/xml-events" 포함 합니다.
+        	var gridStr = ''
+        	+	'<w2:gridView xmlns:w2="http://www.inswave.com/websquare" xmlns:ev="http://www.w3.org/2001/xml-events" '
+        	+		' scrollByColumn="false" fixedColumnWithHidden="true" useShiftKey="false" autoFit="allColumn" '
+        	+ 		' style="width: 500px;height: 150px;" ' 
+        	+ 		' id="gridView1" dataList="dataList1" >'
+        	+ 		'<w2:header id="header1" style="">'
+        	+ 			'<w2:row id="row1" style="">'
+        	+ 				gridHeader
+        	+ 			'</w2:row>'
+        	+		'</w2:header>'
+        	+		'<w2:gBody id="gBody1" style="">'
+        	+			'<w2:row id="row2" style="">'
+        	+				gridBody
+        	+			'</w2:row>'
+        	+		'</w2:gBody>'
+        	+	'</w2:gridView>' ;
+        	
+        	
+        	//동적그리드 생성 방식 1 (setGridStyle 방식) 
+        	gridView1.setGridStyle(WebSquare.xml.parse( gridStr , true ));						//기존 gridView 기준으로 style 만 변경하는 형태 
+			
+			//동적그리드 생성 방식 2 ($p.dynamicCreate 방식)  => $p.dynamicCreate 로 생성할 경우에는 기존 gridView 객체 삭제 이후 진행해야 dataList 바인딩이 제대로 이루어짐 
+			/*
+			if($p.getComponentById("gridView1")!=undefined)	gridView1.remove();
+
+        	var parentObj = grp_dynamic;		//생성할 그리드뷰의 상위 object (body 하위에 바로 넣을경우  WebSquare.getBody() )
+        	$p.dynamicCreate("gridView1", "gridView", gridStr, parentObj);  	//gridView 신규 생성하는 형태로 생성시 기존 gridView 삭제 이후 처리 해야 dataList 바인딩이 제대로 이루어짐 
+        	*/
+        	
+        	
+        	//dataList 데이터 셋팅  
+        	dataList1.setJSON(obj); 
+        }
+        
+        setColumnID(jsonData1);
+        ]]></script>
+	</head>
+	<body>
+		<xf:group style="" id="grp_dynamic">
+			<w2:gridView id="gridView1" dataList="dataList1" useShiftKey="false" scrollByColumn="false" style="width:489px;height:100px;" >
+				<w2:header style="" id="header2">
+					<w2:row style="" id="row3">
+						<w2:column width="70" style="height:20px" inputType="text" id="column5" value="name1" blockSelect="false"></w2:column>
+					</w2:row>
+				</w2:header>
+				<w2:gBody style="" id="gBody2">
+					<w2:row style="" id="row4">
+						<w2:column width="70" style="height:20px" inputType="text" id="col1" blockSelect="false"></w2:column>
+					</w2:row>
+				</w2:gBody>
+			</w2:gridView>
+		</xf:group>
+		<xf:trigger type="button" id="trigger1" style="width: 80px;height: 23px;float : left;">
+			<xf:label><![CDATA[1]]></xf:label>
+			<script ev:event="onclick" type="javascript"><![CDATA[ 
+    			setColumnID(jsonData1);
+    		]]></script>
+		</xf:trigger>
+		<xf:trigger type="button" id="trigger2" style="width: 80px;height: 23px;">
+			<xf:label><![CDATA[2]]></xf:label>
+			<script ev:event="onclick" type="javascript"><![CDATA[
+    			setColumnID(jsonData2);
+    		 ]]></script>
+		</xf:trigger>
+		<w2:textbox id="textbox1" style="width: 500px;height: 50px;margin-top:5px;margin-left:3px;" label="2번 버튼 클릭하시면 그리드가 변경됩니다."></w2:textbox>
+	</body>
+</html>

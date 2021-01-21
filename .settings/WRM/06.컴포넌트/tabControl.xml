@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:buildDate/>
+        <w2:userPalette defaultIcon="mix.png" desc=""/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+        </xf:model>
+        <script type="javascript"><![CDATA[ ]]></script>
+    </head>
+    <body><w2:tabControl confirmTrueAction="exist" useTabKeyOnly="true" confirmFalseAction="new" useConfirmMessage="false" alwaysDraw="false" style="" id="" class="cm_tabmenu">
+		<w2:tabs disabled="false" style="height:22px;" label="tab1" id="tabs1">
+		</w2:tabs>
+		<w2:tabs disabled="false" style="height:22px;" label="tab2" id="tabs2">
+		</w2:tabs>
+		<w2:tabs disabled="false" style="height:22px;" label="tab3" id="tabs3">
+		</w2:tabs>
+		<w2:content alwaysDraw="false" style="" id="content1">
+			<xf:group id="" style="" class="tabc_wrap"></xf:group>
+		</w2:content>
+		<w2:content alwaysDraw="false" style="" id="content2">
+			<xf:group class="tabc_wrap" id="" style=""></xf:group>
+		</w2:content>
+		<w2:content alwaysDraw="false" style="" id="content3">
+			<xf:group class="tabc_wrap" id="" style=""></xf:group>
+		</w2:content>
+</w2:tabControl>
+</body>
+</html>

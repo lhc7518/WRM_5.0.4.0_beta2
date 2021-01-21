@@ -1,0 +1,9 @@
+{
+   "sendTime": "2018-12-07 19:46:33",
+   "serviceURL": "http://jsonplaceholder.typicode.com/photos",
+   "reqMethod": "POST",
+   "charset": "UTF-8",
+   "contentType": "application/json",
+   "requestContent": "",
+   "responseContent": "{\n  \"id\": 5001\n}"
+}

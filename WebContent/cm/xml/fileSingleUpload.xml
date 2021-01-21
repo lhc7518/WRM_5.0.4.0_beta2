@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_programName="싱글파일업로드" meta_programId="CMXM0102">
+		<w2:type>DEFAULT</w2:type>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" ev:onremoverow="scwin.dlt_file_onremoverow" id="dlt_file" repeatNode="map"
+					saveRemovedData="true" style="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="chk" ignoreStatus="true" name="선택"></w2:column>
+						<w2:column dataType="text" id="fileId" name="파일 아이디"></w2:column>
+						<w2:column dataType="text" id="fileGrpId" name="파일 그룹 아이디"></w2:column>
+						<w2:column dataType="text" id="fileNm" name="로컬 파일명"></w2:column>
+						<w2:column dataType="text" id="physFilePathAddr" name="서버 파일명"></w2:column>
+						<w2:column dataType="text" id="status" name="상태"></w2:column>
+						<w2:column dataType="number" id="fileSiz" name="파일 크기"></w2:column>
+						<w2:column dataType="text" id="apndFileExtsNm" name="파일 타입"></w2:column>
+						<w2:column dataType="text" id="fileStrgPlcyId" name="파일저장정책ID"></w2:column>
+						<w2:column dataType="text" id="fileStrgPlcyPathAddr" name="파일저장정책경로주소"></w2:column>
+						<w2:column dataType="text" id="svrStrgFileNm" name="서버저장파일명"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<xf:submission abortTrigger="" action="/cmm/fileMgmt/v1/saveFile" customHandler="" encoding="UTF-8" errorHandler="" ev:submit="" ev:submitdone="scwin.sbm_saveFile_submitdone" ev:submiterror="" id="sbm_saveFile" instance="" mediatype="application/json" method="post" mode="asynchronous" processMsg="" ref='data:json,{"action":"modified","id":"dlt_file","key":"fileList"}' replace="" target="">
+			</xf:submission>
+			<w2:workflowCollection>
+			</w2:workflowCollection>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+	// 업로드 가능한 개별 첨부 파일 크기 (단위 : Byte)
+	scwin.maxFileSize = 0;
+
+	// 파일 업로드 정책
+	scwin.policy = "default";
+
+	// 파일 업로드 완료 후 호출할 콜백 함수
+	scwin.callBackUploadDoneFunc = null;
+
+	// 파일이 선택되며 호출할 콜백 함수
+	scwin.callbackSelectedDone = null;
+
+	// 업로드 서비스 호출 URL
+	scwin.FILE_UPLOAD_URL = "/cmm/fileMgmt/v1/createFile";
+
+	/**
+	 * 페이지 시작 시 Loading 이벤트
+	 */
+	scwin.onpageload = function() {
+		upd_singleFileUpload.changeFormAction(scwin.FILE_UPLOAD_URL);
+		upd_singleFileUpload.submit = scwin.submit;
+	};
+
+	scwin.submit = function() {
+
+		// ※ 주의사항
+		// 아래와 같이 HTML DOM 접근하는 코드는 EA팀 UI 공통 담당자와 상의한 후, 공통 모듈에 한정해서 제한적으로 사용해야 합니다.
+		// DOM을 직접 접근하는 코드는 웹스퀘어 엔진 동작과 충돌을 일으키거나, 향후 엔진 업데이트 시 장애 요인이 될 수 있습니다.
+		var fileSelected = document.getElementById(upd_singleFileUpload.getID() + "_fakeinput");
+		var fileTobeRead = fileSelected.files[0];
+		var formData = new FormData();
+		var id = this.id;
+		formData.append("FileData", fileTobeRead);
+		formData.append("policy", scwin.policy);
+		formData.append("filename", fileTobeRead.name);
+
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+		    if (xhr.readyState == 4 && xhr.status == 200) {
+		        var obj = eval(id);
+		        var result = xhr.responseText;
+		        obj.callback(result.substring(result.indexOf("<ret>"), result.indexOf("</ret>") + 6));
+		    }
+		};
+		xhr.open("POST", this.dom.form.action, true);
+		xhr.setRequestHeader("X-File-Name", encodeURIComponent(fileTobeRead.name));
+		xhr.send(formData);
+	};
+
+	/**
+	 * 페이지 종료 시 Unloading 이벤트
+	 */
+	scwin.onpageunload = function() {
+
+	};
+
+	/**
+	 * 파일 업로드가 완료되면 호출되는 콜백 함수
+	 */
+	scwin.upd_singleFileUpload_ondone = function(data) {
+
+		var dataObj ;
+		if(typeof data == "string") {
+			dataObj = com.util.getJSON(data.substring(5, data.indexOf("</ret>")));
+		}
+		else {
+			// 정상일때
+			dataObj = com.util.getJSON(WebSquare.xml.getValue(data, "ret"));
+		}
+
+		if (typeof scwin.callBackUploadDoneFunc === "function") {
+			if (dataObj.status === gcm.MESSAGE_CODE.STATUS_SUCCESS) {
+				dlt_file.removeAll();
+				dlt_file.insertJSON(0, [dataObj]);
+				com.sbm.execute(sbm_saveFile);
+			} else {
+				scwin.callBackUploadDoneFunc(dataObj, false);
+			}
+		}
+
+		WebSquare.layer.hideProcessMessage();
+	};
+
+	/**
+	 * 파일 업로드 정책 및 기본 세팅이 완료되면 호출되는 콜백 함수
+	 */
+	scwin.callbackFileUploadSetting = function(policy) {
+		var maxSize = com.num.parseInt(policy.maxSize);
+		if (maxSize > 0) {
+			scwin.maxFileSize = maxSize * 1048576;
+		}
+
+		var filter = "";
+		if (com.util.isEmpty(policy.ext) === false) {
+			var extArr = policy.ext.split(",");
+
+			for (idx in extArr) {
+				filter += "." + extArr[idx] + ",";
+			}
+		} else {
+			filter = "*.*";
+		}
+
+		// ※ 주의사항
+		// 아래와 같이 HTML DOM 접근하는 코드는 EA팀 UI 공통 담당자와 상의한 후, 공통 모듈에 한정해서 제한적으로 사용해야 합니다.
+		// DOM을 직접 접근하는 코드는 웹스퀘어 엔진 동작과 충돌을 일으키거나, 향후 엔진 업데이트 시 장애 요인이 될 수 있습니다.
+		var fileSelected = document.getElementById(upd_singleFileUpload.getID() + "_fakeinput");
+		fileSelected.accept = filter;
+	};
+
+	/**
+	 * 파일 업로드 전에 파라미터 정보를 세팅한다.
+	 */
+	scwin.setUploadParam = function() {
+		upd_singleFileUpload.addParam("policy", scwin.policy);
+	};
+
+	/**
+	 * 파일명이 변경되면 실행되는 이벤트 함수
+	 */
+	scwin.upd_singleFileUpload_onInputValueChange = function(fileName) {
+		try {
+			// ※ 주의사항
+			// 아래와 같이 HTML DOM 접근하는 코드는 EA팀 UI 공통 담당자와 상의한 후, 공통 모듈에 한정해서 제한적으로 사용해야 합니다.
+			// DOM을 직접 접근하는 코드는 웹스퀘어 엔진 동작과 충돌을 일으키거나, 향후 엔진 업데이트 시 장애 요인이 될 수 있습니다.
+			var seletedFileName = upd_singleFileUpload.dom.fakeinput.files[0].name;
+			if ((com.util.isEmpty(fileName) === false) && (fileName.indexOf(seletedFileName) > -1)) {
+				var fileSize = upd_singleFileUpload.dom.fakeinput.files[0].size;
+				if (scwin.maxFileSize < fileSize) {
+					com.win.alert(seletedFileName + "파일의 크기가 " + com.num.formatByte(scwin.maxFileSize) + "를 초과 했습니다");
+					upd_singleFileUpload.reset();
+					seletedFileName = "";
+				}
+			}
+
+			if (typeof scwin.callbackSelectedDone === "function") {
+				scwin.callbackSelectedDone(seletedFileName);
+			}
+		} catch(ex) {
+			console.erorr(ex);
+		}
+	};
+
+	/**
+	 * 파일 정보를 DB에 저장하고 업무 화면에서 정의한 콜백함수를 호출한다.
+	 */
+	scwin.sbm_saveFile_submitdone = function(e) {
+		if(e.responseJSON.SERVER_MESSAGE.code == "200") {
+			scwin.callBackUploadDoneFunc(e.responseJSON.SERVER_RESULT[0], true);
+		}
+		else {
+			scwin.callBackUploadDoneFunc([], false);
+		}
+	};
+	]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+		<w2:upload type="" imageStyle="" inputStyle="" disabled="" style="" id="upd_singleFileUpload" class="" ev:ondone="scwin.upd_singleFileUpload_ondone" ev:onInputValueChange="scwin.upd_singleFileUpload_onInputValueChange">
+		</w2:upload>
+	</body>
+</html>

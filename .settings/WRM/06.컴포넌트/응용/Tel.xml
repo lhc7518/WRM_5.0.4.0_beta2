@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:buildDate/>
+        <w2:userPalette defaultIcon="mix.png" desc="연락처 입력 화면 용으로 selectbox와 input으로 구성"/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+        </xf:model>
+        <script type="text/javascript"><![CDATA[ ]]></script>
+    </head>
+    <body><xf:group id="" style="" class="telBox">
+	<xf:select1 id="" disabledClass="w2selectbox_disabled" appearance="minimal" style="width:80px;" direction="auto" chooseOption="false" class="" displayMode="label" allOption="false" submenuSize="auto" disabled="false">
+</xf:select1>
+	<w2:span id="" style="" class="" label="-">
+	</w2:span>
+	<xf:input id="" style="width:60px;" class="">
+	</xf:input>
+	<w2:span id="" style="" class="" label="-">
+	</w2:span>
+	<xf:input id="" style="width:60px;">
+	</xf:input>
+</xf:group>
+</body>
+</html>

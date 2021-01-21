@@ -1,0 +1,160 @@
+{
+	"disableIcon": "",
+	"notSupportBrowser": "",
+	"htmlRender": "",
+	"icon": "",
+	"description": "",
+	"version": "",
+	"pluginName": "udc_jumin",
+	"width": "305px",
+	"height": "21px",
+	"company": "",
+	"developer": "",
+	"componentName": "udc_jumin",
+	"category": "Basic",
+	"apis": [
+		{
+			"name": "setValue",
+			"description": "주민번호 set",
+			"params": [
+				{
+					"name": "num",
+					"description": "Number 형태의 주민번호 데이터 ",
+					"type": "Number"
+				}
+			],
+			"return": [
+				{
+					"description": "",
+					"type": ""
+				}
+			]
+		},
+		{
+			"name": "getValue",
+			"description": "주민번호 get",
+			"params": [],
+			"return": [
+				{
+					"description": "입력된 주민번호를 가져온다.",
+					"type": "Number"
+				}
+			]
+		},
+		{
+			"name": "setReadOnly",
+			"description": "컴포넌트 readOnly 처리",
+			"params": [
+				{
+					"name": "flag",
+					"description": "readOnly 여부(true, false)",
+					"type": "Boolean"
+				}
+			],
+			"return": [
+				{
+					"description": "",
+					"type": ""
+				}
+			]
+		},
+		{
+			"name": "setDisabled",
+			"description": "컴포넌트 disabled 처리",
+			"params": [
+				{
+					"name": "flag",
+					"description": "disabled 여부(true, false)",
+					"type": "Boolean"
+				}
+			],
+			"return": [
+				{
+					"description": "",
+					"type": ""
+				}
+			]
+		},
+		{
+			"name": "getReadOnly",
+			"description": "컴포넌트 readOnly 여부",
+			"params": [],
+			"return": [
+				{
+					"description": "true, false",
+					"type": "Boolean"
+				}
+			]
+		},
+		{
+			"name": "getDisabled",
+			"description": "컴포넌트 disabled 여부",
+			"params": [],
+			"return": [
+				{
+					"description": "true, false",
+					"type": "Boolean"
+				}
+			]
+		}
+	],
+	"properties": [
+		{
+			"default": "",
+			"necessary": "Y",
+			"hidden": "N",
+			"name": "id",
+			"description": "Component id",
+			"type": "string",
+			"bindparent": "",
+			"option": ""
+		},
+		{
+			"default": "false",
+			"necessary": "N",
+			"hidden": "N",
+			"name": "readOnly",
+			"description": "readOnly 여부",
+			"type": "combobox",
+			"bindparent": "",
+			"option": "[true,false]"
+		},
+		{
+			"default": "false",
+			"necessary": "N",
+			"hidden": "N",
+			"name": "disabled",
+			"description": "disabled 여부",
+			"type": "combobox",
+			"bindparent": "",
+			"option": "[true,false]"
+		},
+		{
+			"default": "확인",
+			"necessary": "N",
+			"hidden": "N",
+			"name": "label",
+			"description": "버튼 label명",
+			"type": "string",
+			"bindparent": "",
+			"option": ""
+		},
+		{
+			"default": "-",
+			"necessary": "N",
+			"hidden": "N",
+			"name": "delimeter",
+			"description": "delimeter",
+			"type": "string",
+			"bindparent": "",
+			"option": ""
+		}
+	],
+	"events": [
+		{
+			"name": "onviewchange(flag, info, obj)",
+			"description": "값 변경 시 호출",
+			"type": "user"
+		}
+	]
+}

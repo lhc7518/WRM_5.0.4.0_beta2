@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+    	<w2:buildDate />
+    	<xf:model>
+    		<xf:instance>
+    			<data xmlns="" />
+    		</xf:instance>
+    		<w2:dataCollection baseNode="map"></w2:dataCollection>
+    		<w2:workflowCollection></w2:workflowCollection>
+    	</xf:model>
+    	<script type="text/javascript"><![CDATA[
+
+		scwin.udc_jumin1_onviewchange = function(flag, info, obj) {
+			console.log("flag=>"+flag);
+			console.dir(info);
+			console.log("id=>"+obj.getID());
+		};
+		
+		
+		]]></script>
+    	<w2:require src="/cm/udc/udc_jumin.xml"></w2:require>
+    </head>
+    <body>
+    	<w2:udc_jumin delimeter="#" readOnly="false" disabled="false" style="width: 305px;height: 21px;" id="udc_jumin1" label="체크1" ev:onviewchange="scwin.udc_jumin1_onviewchange"></w2:udc_jumin>
+    </body>
+</html>

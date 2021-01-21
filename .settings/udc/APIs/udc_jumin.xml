@@ -1,0 +1,214 @@
+<hashtable>
+    <data hashkey="applyclassfunction"/>
+    <data hashkey="callclassfunction"/>
+    <data hashkey="inherit"/>
+    <data hashkey="functiondetail">
+        <vector result="6">
+            <data vectorkey="0">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_jumin.prototype.setValue(num)"/>
+                    <data hashkey="shortCutName" value="setValue"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_jumin.prototype.setValue(num)"/>
+                    <data hashkey="author" value="udc"/>
+                    <data hashkey="see"/>
+                    <data hashkey="hidden" value="false"/>
+                    <data hashkey="cdate"/>
+                    <data hashkey="parameter">
+                        <hashtable>
+                            <data hashkey="num">
+                                <hashtable>
+                                    <data hashkey="name" value="num"/>
+                                    <data hashkey="type" value="Number"/>
+                                    <data hashkey="description" value="Number 형태의 주민번호 데이터 "/>
+                                </hashtable>
+                            </data>
+                        </hashtable>
+                    </data>
+                    <data hashkey="description" value="주민번호 set"/>
+                    <data hashkey="return">
+                        <hashtable>
+                            <data hashkey="type" value=""/>
+                            <data hashkey="description" value=""/>
+                        </hashtable>
+                    </data>
+                </hashtable>
+            </data>
+            <data vectorkey="1">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_jumin.prototype.getValue()"/>
+                    <data hashkey="shortCutName" value="getValue"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_jumin.prototype.getValue()"/>
+                    <data hashkey="author" value="udc"/>
+                    <data hashkey="see"/>
+                    <data hashkey="hidden" value="false"/>
+                    <data hashkey="cdate"/>
+                    <data hashkey="parameter">
+                        <hashtable/>
+                    </data>
+                    <data hashkey="description" value="주민번호 get"/>
+                    <data hashkey="return">
+                        <hashtable>
+                            <data hashkey="type" value="Number"/>
+                            <data hashkey="description" value="입력된 주민번호를 가져온다."/>
+                        </hashtable>
+                    </data>
+                </hashtable>
+            </data>
+            <data vectorkey="2">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_jumin.prototype.setReadOnly(flag)"/>
+                    <data hashkey="shortCutName" value="setReadOnly"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_jumin.prototype.setReadOnly(flag)"/>
+                    <data hashkey="author" value="udc"/>
+                    <data hashkey="see"/>
+                    <data hashkey="hidden" value="false"/>
+                    <data hashkey="cdate"/>
+                    <data hashkey="parameter">
+                        <hashtable>
+                            <data hashkey="flag">
+                                <hashtable>
+                                    <data hashkey="name" value="flag"/>
+                                    <data hashkey="type" value="Boolean"/>
+                                    <data hashkey="description" value="readOnly 여부(true, false)"/>
+                                </hashtable>
+                            </data>
+                        </hashtable>
+                    </data>
+                    <data hashkey="description" value="컴포넌트 readOnly 처리"/>
+                    <data hashkey="return">
+                        <hashtable>
+                            <data hashkey="type" value=""/>
+                            <data hashkey="description" value=""/>
+                        </hashtable>
+                    </data>
+                </hashtable>
+            </data>
+            <data vectorkey="3">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_jumin.prototype.setDisabled(flag)"/>
+                    <data hashkey="shortCutName" value="setDisabled"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_jumin.prototype.setDisabled(flag)"/>
+                    <data hashkey="author" value="udc"/>
+                    <data hashkey="see"/>
+                    <data hashkey="hidden" value="false"/>
+                    <data hashkey="cdate"/>
+                    <data hashkey="parameter">
+                        <hashtable>
+                            <data hashkey="flag">
+                                <hashtable>
+                                    <data hashkey="name" value="flag"/>
+                                    <data hashkey="type" value="Boolean"/>
+                                    <data hashkey="description" value="disabled 여부(true, false)"/>
+                                </hashtable>
+                            </data>
+                        </hashtable>
+                    </data>
+                    <data hashkey="description" value="컴포넌트 disabled 처리"/>
+                    <data hashkey="return">
+                        <hashtable>
+                            <data hashkey="type" value=""/>
+                            <data hashkey="description" value=""/>
+                        </hashtable>
+                    </data>
+                </hashtable>
+            </data>
+            <data vectorkey="4">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_jumin.prototype.getReadOnly()"/>
+                    <data hashkey="shortCutName" value="getReadOnly"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_jumin.prototype.getReadOnly()"/>
+                    <data hashkey="author" value="udc"/>
+                    <data hashkey="see"/>
+                    <data hashkey="hidden" value="false"/>
+                    <data hashkey="cdate"/>
+                    <data hashkey="parameter">
+                        <hashtable/>
+                    </data>
+                    <data hashkey="description" value="컴포넌트 readOnly 여부"/>
+                    <data hashkey="return">
+                        <hashtable>
+                            <data hashkey="type" value="Boolean"/>
+                            <data hashkey="description" value="true, false"/>
+                        </hashtable>
+                    </data>
+                </hashtable>
+            </data>
+            <data vectorkey="5">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_jumin.prototype.getDisabled()"/>
+                    <data hashkey="shortCutName" value="getDisabled"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_jumin.prototype.getDisabled()"/>
+                    <data hashkey="author" value="udc"/>
+                    <data hashkey="see"/>
+                    <data hashkey="hidden" value="false"/>
+                    <data hashkey="cdate"/>
+                    <data hashkey="parameter">
+                        <hashtable/>
+                    </data>
+                    <data hashkey="description" value="컴포넌트 disabled 여부"/>
+                    <data hashkey="return">
+                        <hashtable>
+                            <data hashkey="type" value="Boolean"/>
+                            <data hashkey="description" value="true, false"/>
+                        </hashtable>
+                    </data>
+                </hashtable>
+            </data>
+        </vector>
+    </data>
+    <data hashkey="constructorsummary"/>
+    <data hashkey="plugininfo"/>
+    <data hashkey="functionsummary">
+        <hashtable>
+            <data hashkey="WebSquare.uiplugin.udc_jumin.prototype.setValue(num)">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_jumin.prototype.setValue(num)"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_jumin.prototype.setValue(num)"/>
+                    <data hashkey="description" value="주민번호 set"/>
+                    <data hashkey="shortCutName" value="setValue"/>
+                </hashtable>
+            </data>
+            <data hashkey="WebSquare.uiplugin.udc_jumin.prototype.getValue()">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_jumin.prototype.getValue()"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_jumin.prototype.getValue()"/>
+                    <data hashkey="description" value="주민번호 get"/>
+                    <data hashkey="shortCutName" value="getValue"/>
+                </hashtable>
+            </data>
+            <data hashkey="WebSquare.uiplugin.udc_jumin.prototype.setReadOnly(flag)">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_jumin.prototype.setReadOnly(flag)"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_jumin.prototype.setReadOnly(flag)"/>
+                    <data hashkey="description" value="컴포넌트 readOnly 처리"/>
+                    <data hashkey="shortCutName" value="setReadOnly"/>
+                </hashtable>
+            </data>
+            <data hashkey="WebSquare.uiplugin.udc_jumin.prototype.setDisabled(flag)">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_jumin.prototype.setDisabled(flag)"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_jumin.prototype.setDisabled(flag)"/>
+                    <data hashkey="description" value="컴포넌트 disabled 처리"/>
+                    <data hashkey="shortCutName" value="setDisabled"/>
+                </hashtable>
+            </data>
+            <data hashkey="WebSquare.uiplugin.udc_jumin.prototype.getReadOnly()">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_jumin.prototype.getReadOnly()"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_jumin.prototype.getReadOnly()"/>
+                    <data hashkey="description" value="컴포넌트 readOnly 여부"/>
+                    <data hashkey="shortCutName" value="getReadOnly"/>
+                </hashtable>
+            </data>
+            <data hashkey="WebSquare.uiplugin.udc_jumin.prototype.getDisabled()">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_jumin.prototype.getDisabled()"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_jumin.prototype.getDisabled()"/>
+                    <data hashkey="description" value="컴포넌트 disabled 여부"/>
+                    <data hashkey="shortCutName" value="getDisabled"/>
+                </hashtable>
+            </data>
+        </hashtable>
+    </data>
+    <data hashkey="constructordetail"/>
+</hashtable>

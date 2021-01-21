@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:buildDate/>
+        <w2:userPalette defaultIcon="mix.png" desc=""/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+        </xf:model>
+        <script type="text/javascript"><![CDATA[ ]]></script>
+    </head>
+    <body><xf:group class="tbl_search" id="" style="">
+	<xf:group class="w2tb tbl_sc" id="" style="" tagname="table">
+		<w2:attributes>
+			<w2:summary>
+</w2:summary>
+</w2:attributes>
+		<xf:group tagname="colgroup">
+			<xf:group style="width:5%;" tagname="col">
+</xf:group>
+			<xf:group style="" tagname="col">
+</xf:group>
+			<xf:group style="width:5%;" tagname="col">
+</xf:group>
+			<xf:group style="" tagname="col">
+</xf:group>
+			<xf:group style="width:5%;" tagname="col">
+</xf:group>
+			<xf:group style="" tagname="col">
+</xf:group>
+			<xf:group style="width:5%;" tagname="col">
+</xf:group>
+			<xf:group style="" tagname="col">
+</xf:group>
+			<xf:group style="width:15%;" tagname="col">
+</xf:group>
+</xf:group>
+		<xf:group tagname="tr">
+			<xf:group class="w2tb_th req" style="width:100px;" tagname="th">라벨</xf:group>
+			<xf:group class="w2tb_td" style="" tagname="td">
+				<xf:input class="req" id="" style="width: 80px;height: 20px;">
+</xf:input>
+				<w2:anchor class="btn_tcm_sh_ic" id="" outerDiv="false" style="">
+					<xf:label>
+<![CDATA[검색]]></xf:label>
+</w2:anchor>
+</xf:group>
+			<xf:group class="w2tb_th" style="" tagname="th">라벨</xf:group>
+			<xf:group class="w2tb_td" style="" tagname="td">
+				<w2:inputCalendar calendarValueType="yearMonthDate" class="" dateValidCheck="" focusOnDateSelect="false" footerDiv="false" id="" renderDiv="true" renderType="component" style="width: 120px;height: 22px;" weekStartsOn="0">
+</w2:inputCalendar>
+</xf:group>
+			<xf:group class="w2tb_th" style="" tagname="th">라벨</xf:group>
+			<xf:group class="w2tb_td" style="" tagname="td">
+				<xf:input id="" style="width: 80px;height: 20px;">
+</xf:input>
+</xf:group>
+			<xf:group class="w2tb_th" style="" tagname="th">라벨</xf:group>
+			<xf:group class="w2tb_td" style="" tagname="td">
+				<xf:input id="" style="width: 80px;height: 20px;">
+</xf:input>
+</xf:group>
+			<xf:group class="w2tb_td" style="" tagname="td">
+				<xf:group class="fr" id="">
+					<w2:anchor class="btn_sh" id="" outerDiv="true" style="">
+						<xf:label>
+<![CDATA[조회]]></xf:label>
+</w2:anchor>
+</xf:group>
+</xf:group>
+</xf:group>
+</xf:group>
+</xf:group>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:buildDate/>
+        <w2:userPalette defaultIcon="layout.png" desc="건수+그리드뷰"/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+        </xf:model>
+        <script type="text/javascript"><![CDATA[ ]]></script>
+    </head>
+    <body><xf:group class="defaultbox" id="" style="">
+	<xf:group class="defaultbox" id="" style="">
+		<xf:group class="fr" id="" style="">
+			<w2:span class="df_total" id="" label="총" style="">
+			</w2:span>
+			<w2:span class="df_total num" id="" label="0" style="" displayFormat="#,##0" dataType="number">
+			</w2:span>
+			<w2:span class="df_total" id="" label="건" style="" dataType="text" displayFormat="">
+			</w2:span>
+</xf:group>
+</xf:group>
+	<w2:gridView autoFit="allColumn" autoFitMinWidth="600" class="cm_grid" dataList="" fixedColumnWithHidden="true" id="" ignoreCellClick="false" ignoreToggleOnDisabled="false" scrollByColumn="false" scrollByColumnAdaptive="false" style="height: 150px;" summaryAuto="false" useShiftKey="true">
+		<w2:header id="header1" style="">
+			<w2:row id="row1" style="">
+				<w2:column blockSelect="false" displayMode="label" id="column1" inputType="text" style="height:25px;" width="70">
+				</w2:column>
+</w2:row>
+</w2:header>
+		<w2:gBody id="gBody1" style="">
+			<w2:row id="row2" style="">
+				<w2:column blockSelect="false" displayMode="label" id="column2" inputType="text" style="height:25px;" width="70">
+				</w2:column>
+</w2:row>
+</w2:gBody>
+</w2:gridView>
+</xf:group>
+</body>
+</html>

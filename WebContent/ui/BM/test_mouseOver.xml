@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>DEFAULT</w2:type>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection>
+			</w2:workflowCollection>
+		</xf:model>
+		<script type="text/javascript"><![CDATA[
+	
+	function lfn_onload(){
+		ipt_phone.setValue("01012345678");
+	}
+	
+	//마우스 오버 시 displayFormat 지정
+	function lfn_mouseOver(e) {
+		ipt_phone.setDisplayFormat("###-####-####");
+	}
+	
+	//마우스 아웃 시 displayFormat 해제 
+	function lfn_mouseOut(e) {
+		ipt_phone.setDisplayFormat("");
+	}
+	
+	function lfn_getValue(e) {
+		alert("실제 값=>"+ipt_phone.getValue());
+	}
+	
+	lfn_onload();
+	
+	]]></script>
+	</head>
+	<body>
+		<xf:group id="" style="position: absolute;top: 50px;left: 50px;">
+			<xf:input dataType="text" style="width: 144px;height: 21px;" id="ipt_phone">
+				<script ev:event="onmouseover(e)" type="text/javascript"><![CDATA[
+	    			lfn_mouseOver(e);
+	    		 ]]></script>
+				<script ev:event="onmouseout(e)" type="text/javascript"><![CDATA[
+	    			lfn_mouseOut(e);
+	    		 ]]></script>
+			</xf:input>
+			<xf:trigger style="width: 120px;height: 23px;margin-left: 10px;" id="" type="button">
+				<xf:label><![CDATA[getValue]]></xf:label>
+				<script ev:event="onclick(e)" type="text/javascript"><![CDATA[
+    				lfn_getValue(e);
+    		 	]]></script>
+			</xf:trigger>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection>
+			</w2:dataCollection>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+		
+	/**
+	 * 메시지 박스 화면 초기화 작업을 수행한다.
+	 */	
+	scwin.onpageload = function() {
+		try{
+			var messageType = scwin.getMessageType();
+			var message = com.data.getParameter("message") || "메시지 없음";
+			tbx_message.setValue(message);
+	
+			if (messageType === "alert") {
+				btn_cancel.hide();
+			} else if (messageType === "confirm") {
+				btn_cancel.show("");
+			}
+		} catch(ex) {
+			console.error(ex);
+		}
+	};	
+	
+	scwin.onpageunload = function() {
+
+	};
+	
+	scwin.btn_confirm_onclick = function(e) {
+		try {
+			var callbackFn = com.data.getParameter("callbackFn");
+			var callBackParam = com.data.getParameter("callBackParam");
+			if (scwin.getMessageType() == "confirm") {
+				callBackParam.clickValue = true;
+			}
+			com.win.closePopup(callbackFn, callBackParam);
+		}catch(ex) {
+			console.error(ex);
+		}
+	};
+
+	scwin.btn_cancel_onclick = function(e) {
+		try {
+			var callbackFn = com.data.getParameter("callbackFn");
+			var callBackParam = com.data.getParameter("callBackParam");
+			if (scwin.getMessageType() == "confirm") {
+				callBackParam.clickValue = false;
+			}
+			com.win.closePopup(callbackFn, callBackParam);
+		} catch(ex) {
+			console.error(ex);
+		}
+	};
+
+	scwin.getMessageType = function() {
+		var messageType = com.data.getParameter("messageType") || "alert";
+		return messageType;
+	}
+	]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+		<xf:group class="" id="group5" style="position: relative;height:105px;">
+			<xf:group class="" id="group6" style="position: relative;height:80px;">
+				<w2:scrollView class="" id="scrollView2" style="position: relative;height:80px;" bounce="" horizontalScroll="" showHorizontalScroll="" showVerticalScroll="" verticalScroll="">
+					<w2:textbox id="tbx_message" label="" style="position: relative;padding:10px;" escape="false"/><!-- escape="false" 있어야 줄바꿈 가능(2021-01-13 LHC) -->
+				</w2:scrollView>
+			</xf:group>
+			<xf:group class="" id="grp_button" style="text-align: center;" adaptive="">			
+				<w2:anchor class="btn_com mr5" id="btn_confirm" outerDiv="" style="" ev:onclick="scwin.btn_confirm_onclick">
+					<xf:label><![CDATA[확인]]></xf:label>
+				</w2:anchor>
+				<w2:anchor class="btn_com mr5" id="btn_cancel" outerDiv="" style="" ev:onclick="scwin.btn_cancel_onclick">
+					<xf:label><![CDATA[취소]]></xf:label>
+				</w2:anchor>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

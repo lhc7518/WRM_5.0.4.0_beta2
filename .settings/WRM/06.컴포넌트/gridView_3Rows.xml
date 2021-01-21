@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:buildDate/>
+        <w2:userPalette defaultIcon="mix.png" desc="3행 gridView"/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+        </xf:model>
+        <script type="text/javascript"><![CDATA[ ]]></script>
+    </head>
+    <body><w2:gridView dataList="" scrollByColumn="false" summaryAuto="false" scrollByColumnAdaptive="false" id="" style="height: 250px;" ignoreCellClick="false" ignoreToggleOnDisabled="false" fixedColumnWithHidden="true" useShiftKey="true" class="cm_grid" autoFit="allColumn" autoFitMinWidth="600">
+	<w2:header id="header1" style="">
+		<w2:row id="row1" style="">
+			<w2:column blockSelect="false" id="column1" style="height:25px;" width="70" inputType="text" displayMode="label">
+			</w2:column>
+</w2:row>
+		<w2:row id="row4" style="">
+			<w2:column blockSelect="false" id="column4" style="height:25px;" width="70" inputType="text" displayMode="label">
+			</w2:column>
+</w2:row>
+		<w2:row id="row5" style="">
+			<w2:column blockSelect="false" id="column5" style="height:25px;" width="70" inputType="text" displayMode="label">
+			</w2:column>
+</w2:row>
+</w2:header>
+	<w2:gBody id="gBody1" style="">
+		<w2:row id="row2" style="">
+			<w2:column blockSelect="false" id="column2" style="height:25px;" width="70" inputType="text" displayMode="label">
+			</w2:column>
+</w2:row>
+		<w2:row id="row6" style="">
+			<w2:column blockSelect="false" id="column6" style="height:25px;" width="70" inputType="text" displayMode="label">
+			</w2:column>
+</w2:row>
+		<w2:row id="row7" style="">
+			<w2:column blockSelect="false" id="column7" style="height:25px;" width="70" inputType="text" displayMode="label">
+			</w2:column>
+</w2:row>
+</w2:gBody>
+</w2:gridView>
+</body>
+</html>

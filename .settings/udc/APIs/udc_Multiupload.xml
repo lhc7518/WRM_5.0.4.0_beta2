@@ -1,0 +1,90 @@
+<hashtable>
+    <data hashkey="applyclassfunction"/>
+    <data hashkey="callclassfunction"/>
+    <data hashkey="inherit"/>
+    <data hashkey="functiondetail">
+        <vector result="2">
+            <data vectorkey="0">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_Multiupload.prototype.searchFileList(fileGroupStr)"/>
+                    <data hashkey="shortCutName" value="searchFileList"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_Multiupload.prototype.searchFileList(fileGroupStr)"/>
+                    <data hashkey="author" value="udc"/>
+                    <data hashkey="see"/>
+                    <data hashkey="hidden" value="false"/>
+                    <data hashkey="cdate"/>
+                    <data hashkey="parameter">
+                        <hashtable>
+                            <data hashkey="fileGroupStr">
+                                <hashtable>
+                                    <data hashkey="name" value="fileGroupStr"/>
+                                    <data hashkey="type" value="String"/>
+                                    <data hashkey="description" value="파일그룹을 입력하여 파일목록을 조회한다. 예) searchFileList(&quot;AA11&quot;);"/>
+                                </hashtable>
+                            </data>
+                        </hashtable>
+                    </data>
+                    <data hashkey="description" value="파일목록을 조회한다."/>
+                    <data hashkey="return">
+                        <hashtable>
+                            <data hashkey="type" value="Object"/>
+                            <data hashkey="description" value="파일목록"/>
+                        </hashtable>
+                    </data>
+                </hashtable>
+            </data>
+            <data vectorkey="1">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_Multiupload.prototype.setFileGrpSeq(seq)"/>
+                    <data hashkey="shortCutName" value="setFileGrpSeq"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_Multiupload.prototype.setFileGrpSeq(seq)"/>
+                    <data hashkey="author" value="udc"/>
+                    <data hashkey="see"/>
+                    <data hashkey="hidden" value="false"/>
+                    <data hashkey="cdate"/>
+                    <data hashkey="parameter">
+                        <hashtable>
+                            <data hashkey="seq">
+                                <hashtable>
+                                    <data hashkey="name" value="seq"/>
+                                    <data hashkey="type" value="Number"/>
+                                    <data hashkey="description" value="파일그룹순번"/>
+                                </hashtable>
+                            </data>
+                        </hashtable>
+                    </data>
+                    <data hashkey="description" value="파일그룹순번을 지정한다."/>
+                    <data hashkey="return">
+                        <hashtable>
+                            <data hashkey="type" value="String"/>
+                            <data hashkey="description" value="없음"/>
+                        </hashtable>
+                    </data>
+                </hashtable>
+            </data>
+        </vector>
+    </data>
+    <data hashkey="constructorsummary"/>
+    <data hashkey="plugininfo"/>
+    <data hashkey="functionsummary">
+        <hashtable>
+            <data hashkey="WebSquare.uiplugin.udc_Multiupload.prototype.searchFileList(fileGroupStr)">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_Multiupload.prototype.searchFileList(fileGroupStr)"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_Multiupload.prototype.searchFileList(fileGroupStr)"/>
+                    <data hashkey="description" value="파일목록을 조회한다."/>
+                    <data hashkey="shortCutName" value="searchFileList"/>
+                </hashtable>
+            </data>
+            <data hashkey="WebSquare.uiplugin.udc_Multiupload.prototype.setFileGrpSeq(seq)">
+                <hashtable>
+                    <data hashkey="name" value="WebSquare.uiplugin.udc_Multiupload.prototype.setFileGrpSeq(seq)"/>
+                    <data hashkey="standardName" value="WebSquare.uiplugin.udc_Multiupload.prototype.setFileGrpSeq(seq)"/>
+                    <data hashkey="description" value="파일그룹순번을 지정한다."/>
+                    <data hashkey="shortCutName" value="setFileGrpSeq"/>
+                </hashtable>
+            </data>
+        </hashtable>
+    </data>
+    <data hashkey="constructordetail"/>
+</hashtable>

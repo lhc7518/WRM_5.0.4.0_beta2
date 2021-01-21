@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>UDC</w2:type>
+		<w2:buildDate />
+		<w2:model></w2:model>
+	</head>
+	<body>
+		<!--/** WEBSQUARE UDC */
+		{
+			"disableIcon": "",
+			"notSupportBrowser": "",
+			"htmlRender": "",
+			"icon": "",
+			"description": "",
+			"version": "",
+			"pluginName": "udc_jumin",
+			"width": "305px",
+			"height": "21px",
+			"company": "",
+			"developer": "",
+			"componentName": "udc_jumin",
+			"category": "Basic",
+			"apis": [
+				{
+					"name": "setValue",
+					"description": "주민번호 set",
+					"params": [
+						{
+							"name": "num",
+							"description": "Number 형태의 주민번호 데이터 ",
+							"type": "Number"
+						}
+					],
+					"return": [
+						{
+							"description": "",
+							"type": ""
+						}
+					]
+				},
+				{
+					"name": "getValue",
+					"description": "주민번호 get",
+					"params": [],
+					"return": [
+						{
+							"description": "입력된 주민번호를 가져온다.",
+							"type": "Number"
+						}
+					]
+				},
+				{
+					"name": "setReadOnly",
+					"description": "컴포넌트 readOnly 처리",
+					"params": [
+						{
+							"name": "flag",
+							"description": "readOnly 여부(true, false)",
+							"type": "Boolean"
+						}
+					],
+					"return": [
+						{
+							"description": "",
+							"type": ""
+						}
+					]
+				},
+				{
+					"name": "setDisabled",
+					"description": "컴포넌트 disabled 처리",
+					"params": [
+						{
+							"name": "flag",
+							"description": "disabled 여부(true, false)",
+							"type": "Boolean"
+						}
+					],
+					"return": [
+						{
+							"description": "",
+							"type": ""
+						}
+					]
+				},
+				{
+					"name": "getReadOnly",
+					"description": "컴포넌트 readOnly 여부",
+					"params": [],
+					"return": [
+						{
+							"description": "true, false",
+							"type": "Boolean"
+						}
+					]
+				},
+				{
+					"name": "getDisabled",
+					"description": "컴포넌트 disabled 여부",
+					"params": [],
+					"return": [
+						{
+							"description": "true, false",
+							"type": "Boolean"
+						}
+					]
+				}
+			],
+			"properties": [
+				{
+					"default": "",
+					"necessary": "Y",
+					"hidden": "N",
+					"name": "id",
+					"description": "Component id",
+					"type": "string",
+					"bindparent": "",
+					"option": ""
+				},
+				{
+					"default": "false",
+					"necessary": "N",
+					"hidden": "N",
+					"name": "readOnly",
+					"description": "readOnly 여부",
+					"type": "combobox",
+					"bindparent": "",
+					"option": "[true,false]"
+				},
+				{
+					"default": "false",
+					"necessary": "N",
+					"hidden": "N",
+					"name": "disabled",
+					"description": "disabled 여부",
+					"type": "combobox",
+					"bindparent": "",
+					"option": "[true,false]"
+				},
+				{
+					"default": "확인",
+					"necessary": "N",
+					"hidden": "N",
+					"name": "label",
+					"description": "버튼 label명",
+					"type": "string",
+					"bindparent": "",
+					"option": ""
+				},
+				{
+					"default": "-",
+					"necessary": "N",
+					"hidden": "N",
+					"name": "delimeter",
+					"description": "delimeter",
+					"type": "string",
+					"bindparent": "",
+					"option": ""
+				}
+			],
+			"events": [
+				{
+					"name": "onviewchange(flag, info, obj)",
+					"description": "값 변경 시 호출",
+					"type": "user"
+				}
+			]
+		}
+		-->
+		<xf:group id="group1" pluginName="udc_jumin" style="width: 305px;height: 21px;">
+			<link rel="stylesheet" type="text/css" href=""></link>
+			<style type="text/css"><![CDATA[ ]]></style>
+			<script type="text/javascript" src=""></script>
+			<script ev:event="oncreated(options)" type="text/javascript"><![CDATA[
+				/**
+				 * //property handling
+				 * $w.log("id:" + options.id);
+				 * $w.log("readOnly:" + options.readOnly);
+				 * $w.log("disabled:" + options.disabled);
+				 * $w.log("label:" + options.label);
+				 * $w.log("delimeter:" + options.delimeter);
+				 *
+				 * //event trigger
+				 * udc_obj.trigger("onviewchange", [flag, info, obj]); 
+				*/
+
+
+				//property 셋팅 
+				input1.setReadOnly(options.readOnly);
+				input2.setReadOnly(options.readOnly);
+				trigger1.setReadOnly(options.readOnly);
+
+				input1.setDisabled(options.disabled);
+				input2.setDisabled(options.disabled);
+				trigger1.setDisabled(options.disabled);
+				
+				trigger1.setLabel(options.label);
+				
+				textbox1.setValue(options.delimeter);
+
+				
+				/**
+				 * Function description...
+				 * @date 2021. 01. 14
+				 * @memberOf udc_obj
+				 * @param 
+				 * @returns  
+				 * @author LHC
+				 * @example
+				 * @since
+				*/ 
+				udc_obj.setValue = function(num){
+					var oldValue = udc_obj.getValue();
+					
+					var _mum = num + "";
+					var jumin1 = _mum.substr(0, 6);
+					var jumin2 = _mum.substr(6, 7);
+					input1.setValue(jumin1);
+					input2.setValue(jumin2);
+				};
+
+				/**
+				 * Function description...
+				 * @date 2021. 01. 14
+				 * @memberOf udc_obj
+				 * @param 
+				 * @returns  
+				 * @author LHC
+				 * @example
+				 * @since
+				*/ 
+				udc_obj.getValue = function(){
+					return input1.getValue() + input2.getValue();
+				};
+				
+				
+				/**
+				 * Function description...
+				 * @date 2021. 01. 14
+				 * @memberOf udc_obj
+				 * @param 
+				 * @returns  
+				 * @author LHC
+				 * @example
+				 * @since
+				*/ 
+				udc_obj.setReadOnly = function(flag){
+					input1.setReadOnly(flag);
+					input2.setReadOnly(flag);
+					trigger1.setReadOnly(flag);
+				};
+
+				/**
+				 * Function description...
+				 * @date 2021. 01. 14
+				 * @memberOf udc_obj
+				 * @param 
+				 * @returns  
+				 * @author LHC
+				 * @example
+				 * @since
+				*/ 
+				udc_obj.setDisabled = function(flag){
+					input1.setDisabled(flag);
+					input2.setDisabled(flag);
+					trigger1.setDisabled(flag);
+				};
+
+				/**
+				 * Function description...
+				 * @date 2021. 01. 14
+				 * @memberOf udc_obj
+				 * @param 
+				 * @returns  
+				 * @author LHC
+				 * @example
+				 * @since
+				*/ 
+				udc_obj.getReadOnly = function(){
+					return input1.getReadOnly();
+				};
+
+				/**
+				 * Function description...
+				 * @date 2021. 01. 14
+				 * @memberOf udc_obj
+				 * @param 
+				 * @returns  
+				 * @author LHC
+				 * @example
+				 * @since
+				*/ 
+				udc_obj.getDisabled = function(){
+					return input1.getDisabled();
+				};
+			]]></script>
+
+			<script ev:event="onattributeChanged(type,value)" type="text/javascript"><![CDATA[ ]]></script>
+			<script ev:event="ondestroyed()" type="text/javascript"><![CDATA[ ]]></script>
+			<xf:input adjustMaxLength="false" style="width: 100px;height: 21px;float: left" id="input1" class="">
+				<script ev:event="onviewchange(info)" type="text/javascript"><![CDATA[
+					var eventRs = udc_obj.trigger("onviewchange", ["1", info, this]);	
+				 ]]></script>
+			</xf:input>
+			<w2:textbox id="textbox1" label="-" style="width: 20px;height: 21px;text-align: center;float: left;"></w2:textbox>
+			<xf:input adjustMaxLength="false" style="width: 100px;height: 21px;float: left;" id="input2">
+				<script ev:event="onviewchange(info)" type="text/javascript"><![CDATA[
+					var eventRs = udc_obj.trigger("onviewchange", ["2", info, this]);	
+				 ]]></script>
+			</xf:input>
+			<xf:trigger style="width: 80px;height: 21px;float: left;margin-left:5px;" id="trigger1" type="button">
+				<xf:label><![CDATA[확인]]></xf:label>
+				<script ev:event="onclick(e)" type="text/javascript"><![CDATA[
+					alert("입력값=> "+udc_obj.getValue());
+				 ]]></script>
+			</xf:trigger>
+		</xf:group>
+	</body>
+</html>

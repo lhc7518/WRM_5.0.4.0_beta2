@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:buildDate/>
+        <w2:userPalette defaultIcon="mix.png" desc=""/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+        </xf:model>
+        <script type="text/javascript"><![CDATA[ ]]></script>
+    </head>
+    <body><xf:input class="mb5" dataType="text" displayFormat="" displayFormatter="" id="" readOnly="true" ref="" style="width: 80px;">
+</xf:input>
+<w2:anchor class="btn_tcm_sh_ic mb5" ev:onclick="" id="" outerDiv="false" style="" ref="">
+	<xf:label>
+<![CDATA[검색]]></xf:label>
+</w2:anchor>
+<xf:input class="mb5" id="" readOnly="true" ref="" style="width: 200px;">
+</xf:input>
+<xf:input class="" id="" readOnly="true" ref="" style="width: 100%;">
+</xf:input>
+</body>
+</html>

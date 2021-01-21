@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>DEFAULT</w2:type>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="title" name="title" dataType="text"></w2:column>
+						<w2:column id="id" name="id" dataType="text"></w2:column>
+						<w2:column id="start" name="start" dataType="text"></w2:column>
+						<w2:column id="end" name="end" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="false">
+						<w2:row>
+							<title><![CDATA[AAA]]></title>
+							<id><![CDATA[1]]></id>
+							<start><![CDATA[20201001]]></start>
+							<end><![CDATA[20201002]]></end>
+						</w2:row>
+						<w2:row>
+							<title><![CDATA[BBB]]></title>
+							<id><![CDATA[2]]></id>
+							<start><![CDATA[20201010]]></start>
+							<end><![CDATA[20201012]]></end>
+						</w2:row>
+						<w2:row>
+							<title><![CDATA[CCC]]></title>
+							<id><![CDATA[3]]></id>
+							<start><![CDATA[20201020]]></start>
+							<end><![CDATA[20201023]]></end>
+						</w2:row>
+						<w2:row>
+							<title><![CDATA[DDD]]></title>
+							<id><![CDATA[4]]></id>
+							<start><![CDATA[20201015]]></start>
+							<end><![CDATA[20201017]]></end>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection>
+			</w2:workflowCollection>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	scwin.trigger1_onclick = function(e) {
+		scheduleCalendar1.addSchedule({
+    		"title": "ADDED",
+		    "start": "20201001",
+		    "end": "20201003",
+		    "id": "added01"
+		});		
+	};
+	]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+		<xf:trigger type="button"
+			style="width:187px;height:43px;margin:0px;margin-bottom:50px;margin-top:10px;margin-left:100px;padding:10px;font-family:sans-serif;font-style:italic;font-weight:bolder;font-size-adjust:0;font-size:15px;border-width:1px;"
+			id="trigger1" ev:onclick="scwin.trigger1_onclick" toolTip="">
+			<xf:label><![CDATA[addSchedule()]]></xf:label>
+		</xf:trigger>
+		<w2:scheduleCalendar selectable="false" ioFormat="yyyyMMdd" eventLimit="true" id="scheduleCalendar1" lang="ko"
+			defaultDate="" editable="true" headerRightBtn="true" titleColumn="title" startColumn="start" dataList="data:dataList1"
+			style="width: 550px;height: 500px;margin:100px;margin-top:0;border-width:1px;border-color:black;" headerLeftBtn="true"
+			idColumn="id" headerTitle="true" endColumn="end" themeColumn="" locale="ko" tooltipDisplay="" nextDayThreshold="" version="3.6"
+			includeScheduleEnd="true" eventOrderColumn="" timeFormat="HH">
+		</w2:scheduleCalendar>
+
+	</body>
+</html>
