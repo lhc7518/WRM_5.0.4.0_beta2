@@ -1999,6 +1999,51 @@ com.data.createAliasDataList = function( dsId, options ) {
 
 
 /**
+ * dataList 에 동적으로 컬럼추가   (2021-01-22 LHC ) 
+ *
+ * @memberof com.data
+ * @date 2021.01.22
+ * @param {Object} dataListObj				컬럼 추가 할 dataList Object 
+ * @param {Object} columnInfo				추가 할 컬럼 정보 josn Object  
+ * @param 	{String} columnInfo.id				추가 할 컬럼의 id 
+ * @param 	{String} columnInfo.name			추가 할 컬럼의 name 
+ * @param 	{String} columnInfo.datatype		추가 할 컬럼의 dataType
+ * @author Inswave Systems
+ * @example
+		var columnInfo = {
+			id 				: "GRP_CD",
+			name			: "그룹코드",
+			dataType	: "text"	
+		};
+		com.data.dataListInsertColumn(dlt_sampleCode, columnInfo);
+ */
+com.data.dataListInsertColumn = function( dataListObj, columnInfo ) {
+	//필수 입력 값 체크 
+	if ( typeof dataListObj == "undefined" || typeof dataListObj != "object" || dataListObj == null 
+			|| typeof columnInfo == "undefined" || columnInfo == null || typeof columnInfo.id == "undefined" || columnInfo.id == null || columnInfo.id == "" ) {
+		com.win.alert("파라미터 입력이 잘못 되었습니다.");
+		return;
+	}	
+		
+	//동일 id 존재여부 체크 (동일 컬럼 이미 존재 시 return)
+	for ( var i=0; i<dataListObj.getTotalCol(); i++){
+		if ( dataListObj.getColumnID(i) == columnInfo.id ){
+			com.win.alert("이미 해당 컬럼이 존재 합니다.");
+			return;
+		}
+	}
+	
+	//옵션 확인 필요할듯함 
+	var _options = {};
+	_options.name			= columnInfo.name || columnInfo.id;
+	_options.dataType	= columnInfo.dataType || "text";	
+	
+	//dataList 컬럼 추가 
+	dataListObj.insertColumn( columnInfo.id, _options);
+};
+
+
+/**
  * 전체 데이터를 초기 설정 된 데이터(originalData)로 바꾸고 행의 상태를 초기화(R) 시킨다.
  * 초기 설정 된 데이터 란 setJSON, setXML 등과 같은 API들을 통해 설정 된 데이터가 이에 속한다.
  * 추가(C)된 행은 제거한다
