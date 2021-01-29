@@ -2793,7 +2793,7 @@ com.util.isXmlDoc = function(data) {
 	}
 	return false;
 };
-
+ 
 
 /**
  * GridView Row 삭제를 위한 CheckBox 동작을 세팅한다.
