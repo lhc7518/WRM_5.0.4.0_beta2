@@ -240,7 +240,7 @@ gcm.data._getValResultMsg = function(valInfo, value) {
 
 
 /**
- * InputCalendar Validator를 수행한다.		=> 두번 호출되는 현상 있음. (2021-01-18 LHC) 
+ * InputCalendar Validator를 수행한다.	
  *
  * @param {String} value 입력된 날짜 문자열
  * @memberof gcm.data
@@ -289,8 +289,8 @@ gcm.data._downloadGridView = function(grdObj, options) {
 		var dataCollectionName = grdObj.getDataList();
 		if (dataCollectionName != null && typeof dataCollectionName != "undefined" && dataCollectionName != "") {
 			var dataCollection = grdObj.getScopeWindow().$p.getComponentById(dataCollectionName);
-			var name = dataCollection.element.getAttribute("name")
-			if (typeof name != "undefined" && name != "")
+			var name = dataCollection.element.getAttribute("name");	//dataList 에 name attribute 존재 시 
+			if (typeof name != "undefined" && name != "" && name != null)
 				fileName = name;
 		}
 		

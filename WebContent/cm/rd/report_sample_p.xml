@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/css/common.css" type="text/css"?>
+<?xml-stylesheet href="/css/content.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+    xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection>
+                <!-- 보고서 목록 -->
+                <w2:dataList id="dataList_treeview1" baseNode="list" style="" saveRemovedData="false" repeatNode="map">
+                    <w2:columnInfo>
+                        <w2:column id="depth" name="depth" dataType="text"></w2:column>
+                        <w2:column id="code" name="code" dataType="text"></w2:column>
+                        <w2:column id="name" name="name" dataType="text"></w2:column>
+                    </w2:columnInfo>
+                </w2:dataList>
+            </w2:dataCollection>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+	/**
+	*	전역변수  
+	*/
+	scwin.hostUrl				= location.protocol+ '//' + location.hostname + (location.port ? ':' + location.port: '');
+	scwin.reportJsp			= "/cm/rd/public_report.jsp";	//RD 호출 파일 
+	scwin.jsonData			= {};									//jsonData   
+	scwin.callback				= "";									//callback 함수명  
+	scwin.idcCode				= "";									//직영점코드
+	scwin.estimateNumber	= "";									//견적번호		
+        	
+        	
+	scwin.onpageload = function() {
+		//parameter 
+		scwin.param = com.data.getParameter();
+		scwin.idcCode				= scwin.param.idcCode;
+		scwin.estimateNumber	= scwin.param.estimateNumber;
+		scwin.callback				= scwin.param.callback;
+	
+		//RD Tree 목록 셋팅 
+		scwin.lfn_treeInstence();
+		
+		//보고서 영역 사이즈 조절 
+		scwin.lfn_resize();			
+		
+	};
+
+	scwin.onpageunload = function() {
+
+	};        	
+
+        	
+	/**
+		함 수 명: lfn_treeInstence
+		설    명: RD Tree 목록 셋팅 
+		인    자:  
+		리    턴: 
+	*/        	
+	scwin.lfn_treeInstence = function() {
+		//초기 선택 report Code 
+		var initCode		= "1001";
+		
+		//1. Tree Data 셋팅 
+		var treeListObj	= [];
+		treeListObj.push( {depth:"1",		code:"1001",	name:"견적서"} );
+		treeListObj.push( {depth:"1",		code:"1002",	name:"작업지시서"} );                 
+	
+		//2. Tree Data 셋팅 
+		dataList_treeview1.setJSON( treeListObj ); 
+		
+		//3. TreeView 활성화  
+		treeview1.show("");
+		
+		//4. 초기 보고서 선택 
+		treeview1.findNodeByValue( initCode , true );	//TreeView 선택
+		
+		//5. RD Report조회 
+		scwin.lfn_rdReportView( initCode );
+	};
+
+
+	/**
+		함 수 명: lfn_rdReportView
+		설    명: RD Report조회
+		인    자: code
+		리    턴: 
+	*/
+	scwin.lfn_rdReportView = function( code ) {
+		//견적서  
+		if ( code == "1001" ) {
+			scwin.jsonData.rdFile		= "estimate_sheet_N.mrd";		    //RD 파일명
+			scwin.jsonData.paramData	= {
+				idcCode	 			: "AAA"					//직영점코드 
+				,estimateNumber 	: "BBB"		//견적번호
+			};
+		}
+		
+		//자재비 명세서 
+		else if ( code == "1002" ) {
+			scwin.jsonData.rdFile		= "pro_setMaterials_sales_N.mrd";	//RD 파일명
+			scwin.jsonData.paramData	= {
+				idcCode	 			: scwin.idcCode					//직영점코드 
+				,estimateNumber 	: scwin.estimateNumber			//견적번호
+			};
+		} 
+		
+		//선택된 node 값이 없을 경우 패스  
+		else {
+			return;
+		}
+		
+		//RD 출력
+		ifr_master.setSrc( scwin.reportJsp +"?param="+JSON.stringify(scwin.jsonData)); 
+		ifr_master.focus();				
+	};
+
+
+	/**
+		함 수 명: lfn_closePop
+		설    명: 창 닫기 시 callback 있을 경우 데이터 넘겨준다 
+		인    자: 
+		리    턴: 
+	*/          	
+	scwin.lfn_closePop = function(){ 
+		com.win.closePopup(scwin.callback);    			
+	};
+
+
+	/**
+		함 수 명: lfn_resize
+		설    명: 창 사이즈 조절 시 보고서 영역 사이즈 조절  
+		인    자: 
+		리    턴: 
+	*/ 
+	scwin.lfn_resize = function() { 
+		var BrowserWidth		= WebSquare.util.getDocumentSize("width");
+		var BrowserHeight	= WebSquare.util.getDocumentSize("height");
+		var leftWidth			= group85.getSize( "width" );				//메뉴영역 width				
+		
+		//보고서 영역 사이즈 조절 
+		//group84.setSize( BrowserWidth-(leftWidth + 40), null );
+		group84.setSize( BrowserWidth-(leftWidth + 40), BrowserHeight-100 );
+		
+		group85.setSize( leftWidth , BrowserHeight-100 );				
+	};
+
+	
+	//TreeView 목록 클릭 시 
+	scwin.treeview1_onclick = function() {
+		scwin.lfn_rdReportView( this.getSelectedValue() );        //RD Report 조회 
+	};
+		
+	//닫기 버튼 클릭 시 		
+	scwin.btn_close_onclick = function(e) {
+		scwin.lfn_closePop();
+	};	
+	
+
+	window.onresize = function () { 
+		scwin.lfn_resize();
+	};
+	
+	
+	]]></script>
+    </head>
+	<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+        <xf:group id="group73" style="" class="sub_contents pop_page">
+            <w2:textbox class="winpop_tit" id="txt_popupTitle" label="보고서" style=""></w2:textbox>
+            <xf:group id="" style="" class="pop_cont">
+                <xf:group class="dfbox" id="group77" style="">
+                    <xf:group class="fr" id="group78" style="">
+                        <xf:trigger class="btn white small" id="btn_close" style="" toolTip="" type="button" ev:onclick="scwin.btn_close_onclick">
+                            <xf:label>닫기</xf:label>
+                        </xf:trigger>
+                    </xf:group>
+                </xf:group>
+                <xf:group class="mt10 mr5" id="group81" style="" adaptiveThreshold="">
+                    <!-- 트리목록 영역 -->
+                    <xf:group class="fl" id="group85" style="width:160px; height:850px;border : solid 1px #3f6ab9;">
+                        <w2:treeview class="w2treeview_node" dataType="listed" id="treeview1" lineShow="" showTreeDepth="1"
+                            style="width:99%;height:100%;border-bottom:1px solid #ccc;background-color:#ffffff;vertical-align:middle;word-wrap:break-word; display:none;" ev:onclick="scwin.treeview1_onclick">
+                            <w2:itemset nodeset="data:dataList_treeview1">
+                                <w2:label ref="name"></w2:label>
+                                <w2:value ref="code"></w2:value>
+                                <w2:depth ref="depth"></w2:depth>
+                            </w2:itemset>
+                        </w2:treeview>
+                    </xf:group>
+                    <!-- 보고서 영역 -->
+                    <xf:group id="group84" style="width:850px; position:relative;height:850px;border : solid 1px #3f6ab9;" class="fl ml10">
+                        <w2:iframe id="ifr_master" style="width: 100%;height: 100%;" src="" spa="false">
+                        </w2:iframe>
+                    </xf:group>
+                </xf:group>
+            </xf:group>
+        </xf:group>
+    </body>
+</html>
