@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
 	xmlns:xf="http://www.w3.org/2002/xforms">
-	<head>
+	<head meta_screenId="BM001M01" meta_screenName="코드관리">	<!-- 화면소스 > 더보기 > 메타 편집기 -->
 		<!--
 		#####################################################################
 		파일명 : BM001M01.xml
@@ -162,14 +162,30 @@
 				dlt_commonCode.removeAll();
 				dlt_commonCode.reform();
 			} else {
+				/*
 				var grpCd = dlt_commonGrp.getCellData(row, "GRP_CD");
 				if (grpCd) {
 					var param = { dma_commonGrp : { GRP_CD : grpCd } };
 					com.sbm.execute(sbm_commonCode, param);
 				}
+				*/
+				scwin.searchCommonCode( row );
 			}
 		}
 	};
+	
+	
+	
+	/**
+	 * 공통코드 리스트 조회 (2021-02-03 LHC)
+	 */
+	scwin.searchCommonCode = function( row ) {
+		var grpCd = dlt_commonGrp.getCellData(row, "GRP_CD");
+		if (grpCd) {
+			var param = { dma_commonGrp : { GRP_CD : grpCd } };
+			com.sbm.execute(sbm_commonCode, param);
+		}
+	};	
 
 	/**
 	 * 공통코드 리스트 조회 submitdone이벤트 리스트 조회후 건수를 셋팅한다.
@@ -285,6 +301,10 @@
 	scwin.saveGrpCodeAll = function(res) {
 		if (res.clickValue === true) {
 			com.sbm.execute(sbm_saveGrpCodeAll);
+		} else {
+			//취소 시 공통코드 재조회 (2021-02-03 LHC) 
+			var row = grd_groupView.getFocusedRowIndex();
+			scwin.searchCommonCode( row );				
 		}
 	};
 	
@@ -303,6 +323,10 @@
 	scwin.saveCode = function(res) {
 		if (res.clickValue === true) {
 			com.sbm.execute(sbm_saveCode);
+		} else {
+			//취소 시 공통코드 재조회 (2021-02-03 LHC) 
+			var row = grd_groupView.getFocusedRowIndex();
+			scwin.searchCommonCode( row );			
 		}
 	};
 
@@ -367,8 +391,12 @@
 	
 	scwin.sbm_saveCode_submitdone = function(e) {
 		if (com.sbm.getResultCode(e) == gcm.MESSAGE_CODE.STATUS_SUCCESS) {
+			/*
 			var param = { dma_commonGrp : { GRP_CD : dlt_commonGrp.getCellData(grd_groupView.getFocusedRowIndex(), "GRP_CD") } };
 			com.sbm.execute(sbm_commonCode, param);
+			*/
+			var row = grd_groupView.getFocusedRowIndex();
+			scwin.searchCommonCode( row );
 		}
 	};
 	
@@ -528,7 +556,7 @@
 				<w2:gridView sortEvent="ondblclick" ev:onrowindexchange="scwin.grd_groupView_onrowindexchange" editModeEvent="onclick"
 					groupbyZoneHeight="" showSortableImage="" useShiftKey="true" scrollByColumn="false" sortable="true" rowStatusHeaderValue="상태"
 					adaptive="crosstab" rowStatusVisible="true" fixedColumnWithHidden="true" dataList="dlt_commonGrp" keyMoveEditMode="true"
-					ignoreCellClick="false" style="height: 280px;" autoFit="allColumn" visibleRowNum="10" id="grd_groupView" ev:onafteredit=""
+					ignoreCellClick="false" style="height: 290px;" autoFit="allColumn" visibleRowNum="10" id="grd_groupView" ev:onafteredit=""
 					class="cm_grid">
 					<w2:header style="" id="">
 						<w2:row style="" id="">
@@ -596,7 +624,7 @@
 						</xf:group>
 					</xf:group>
 				</xf:group>
-				<w2:gridView ignoreCellClick="false" autoFit="allColumn" visibleRowNum="8" sortable="true" sortEvent="ondblclick"
+				<w2:gridView ignoreCellClick="false" autoFit="allColumn" visibleRowNum="" sortable="true" sortEvent="ondblclick"
 					class="cm_grid" showSortableImage="" fixedColumnWithHidden="true" dataList="dlt_commonCode" id="grd_codeView" style="height:160px !important;"
 					scrollByColumn="false" useShiftKey="true" overflowY="auto" rowStatusVisible="true" ev:onafteredit="" rowStatusHeaderValue="상태"
 					keyMoveEditMode="true" editModeEvent="onclick" adaptive="crosstab" autoFitMinWidth="" sortOrderReverse="">

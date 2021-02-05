@@ -12,6 +12,7 @@
 
 	<annotation-driven />
 
+	<!-- source 접근 경로 (지정된 폴더 하위만 사용하도록)  -->
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/websquare/**" location="/websquare/" />
 	<resources mapping="/cm/**" location="/cm/" />
@@ -22,8 +23,8 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/**" />
-			<exclude-mapping path="/websquare/**" />
-			<exclude-mapping path="/cm/**" />
+			<exclude-mapping path="/websquare/**" />		<!-- interceptor 예외사항 -->
+			<exclude-mapping path="/cm/**" />				<!-- interceptor 예외사항 -->
 			<beans:ref bean="interceptorLoginCheck" />
 		</interceptor>
 	</interceptors>

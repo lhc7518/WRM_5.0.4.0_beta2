@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection>
+            	<w2:dataList id="dataList1" baseNode="list" style=""
+            		repeatNode="map">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1"
+            				dataType="text">
+            			</w2:column>
+            			<w2:column id="col2" name="name2"
+            				dataType="text">
+            			</w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[test1]]></col1>
+            				<col2><![CDATA[test2]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[test1a]]></col1>
+            				<col2><![CDATA[test2a]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[test1b]]></col1>
+            				<col2><![CDATA[test2b]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[test1c]]></col1>
+            				<col2><![CDATA[test2c]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[test1d]]></col1>
+            				<col2><![CDATA[test2d]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[test1e]]></col1>
+            				<col2><![CDATA[test2e]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[test1f]]></col1>
+            				<col2><![CDATA[test2f]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[test1g]]></col1>
+            				<col2><![CDATA[test2g]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[test1h]]></col1>
+            				<col2><![CDATA[test2h]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[test1i]]></col1>
+            				<col2><![CDATA[test2i]]></col2>
+            			</w2:row>            			            			            			            			            			
+
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+        
+		scwin.onpageload = function() {
+			
+		};
+		
+		scwin.onpageunload = function() {
+			
+		};
+        
+		scwin.gridView1_oncellclick = function(row,col) {
+		
+			var columID = gridView1.getColumnID(col);
+			
+			if(columID == "col2") {
+
+				var rowIdx = row - gridView1.getTopRowIndex();    
+				var left = gridView1.getPosition( "left" ) + gridView1.getCellPosition( rowIdx , col , "left" )+gridView1.getCellSize( rowIdx , col , "width" );
+				var top = gridView1.getPosition( "top" ) + gridView1.getCellPosition( rowIdx , col , "top" )+gridView1.getCellSize( rowIdx , col , "height" );
+
+				contextGroup.show();
+				contextGroup.setPosition( left , top );			
+				
+			} 
+		
+		};
+		
+		scwin.gridView1_onrightbuttonclick = function(row,col) {
+			var rowIdx = row - gridView1.getTopRowIndex();    
+			var left = gridView1.getPosition( "left" ) + gridView1.getCellPosition( rowIdx , col , "left" )+gridView1.getCellSize( rowIdx , col , "width" );
+			var top = gridView1.getPosition( "top" ) + gridView1.getCellPosition( rowIdx , col , "top" )+gridView1.getCellSize( rowIdx , col , "height" );
+
+			contextGroup.show();
+			contextGroup.setPosition( left , top );
+		};
+	
+		scwin.gridView1_onscrolly = function() {
+			contextGroup.hide();
+		};
+	
+		scwin.gridBody_anchor406_onclick = function() {
+			alert("click menu1 : excel download!!");
+			com.data.downloadGridViewExcel(gridView1);	//메뉴1 클릭 시 엑셀다운로드 
+		};
+		
+		scwin.gridBody_anchor4066_onclick = function() {
+			alert("click menu2");
+		};
+		
+		scwin.gridBody_anchor407_onclick = function() {
+			alert("click menu3");
+		};
+		
+		scwin.gridBody_anchor408_onclick = function() {
+			alert("click menu4");
+		};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<xf:group id="contextGroup" style="position: absolute ;left:279px;width:100px;top:66px;z-index: 100;display:none;" class="">
+    		<xf:group id="grdBodyContentBox" class="" style="position: absolute;left:0px;top:0px;width:100%;">
+    			<w2:anchor id="gridBody_anchor406" label="" style="position: relative ;width:100px;background-color:#56FFE0;" class="" ev:onclick="scwin.gridBody_anchor406_onclick">
+    				<xf:label>menu1</xf:label>
+    			</w2:anchor>
+    			<w2:anchor id="gridBody_anchor4066" label="" style="position: relative ;width:100px;background-color:#56FFE0;" class="" ev:onclick="scwin.gridBody_anchor4066_onclick">
+    				<xf:label>menu2</xf:label>
+    			</w2:anchor>
+    			<div class="" />
+    			<w2:anchor class="" id="gridBody_anchor407" label="" style="position: relative ;width:100px;background-color:#56FFE0;" ev:onclick="scwin.gridBody_anchor407_onclick">
+    				<xf:label>menu3</xf:label>
+    			</w2:anchor>
+    			<w2:anchor class="" id="gridBody_anchor408" label="" style="position: relative ;width:100px;background-color:#56FFE0;" ev:onclick="scwin.gridBody_anchor408_onclick">
+    				<xf:label>menu4</xf:label>
+    			</w2:anchor>
+    		</xf:group>
+    	</xf:group>
+    	<w2:gridView dataList="dataList1" fixedColumnWithHidden="true" id="gridView1" scrollByColumn="false"
+    		style="position: relative ;left:41px;top:40px;width:203px;height:156px;" useShiftKey="false" ev:oncellclick="scwin.gridView1_oncellclick" ev:onrightbuttonclick="scwin.gridView1_onrightbuttonclick" ev:onscrolly="scwin.gridView1_onscrolly">
+    		<w2:header id="header1" style="">
+    			<w2:row id="row1" style="">
+    				<w2:column blockSelect="false" id="column3" inputType="text" style="height:20px" value="name1" width="70"></w2:column>
+    				<w2:column blockSelect="false" id="column1" inputType="text" style="height:20px" value="name2" width="70"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody id="gBody1" style="">
+    			<w2:row id="row2" style="">
+    				<w2:column blockSelect="false" id="col1" inputType="text" style="height:20px" width="70"></w2:column>
+    				<w2:column blockSelect="false" id="col2" inputType="button" style="height:20px" width="70"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </body>
+</html>

@@ -156,6 +156,7 @@
 	<spa>
 		<onpageunload value="" /> <!-- spa로 페이지 이동 시 호출할 함수의 변수명을 string으로 등록한다. 주로 페이지를 이동한 뒤에 남은 리소스들을 처리하는 함수가 등록된다. -->
 		<variable value="scwin" clone="com" />  <!-- spa로 페이지 이동 시 자동으로 삭제할 객체를 string형태로 등록한다. -->
+		<!-- <variable value="scwin" clone="com,biz" /> --> <!-- 객체를 여러개로 만들어서 쓸경우에는 , 로 구분해서 표시  -->
 		<scriptCache value="true" />  <!-- spa로 페이지 이동 시 외부 모듈을 다시 load하고 실행할지에 대한 여부. true일 경우 한번 로딩된 외부 모듈은 다시 로딩하지 않으며 실행 또한 하지 않는다."/> -->
 		<autoReload value="true" count="50" /> <!-- spa로 페이지 이동 시 화면에 메모리 릭이 발생하는 웹스퀘어 컴포넌트(fusionchart, editor)가 있을 경우 해당 컴포넌트 개수가 count 설정값보다 많아질 경우 자동으로 브라우저를 갱신하도록 하는 기능에 대한 설정. count를 
 			0으로 설정하면 화면에 fusionchart나 editor가 있으면 페이지를 이동할 때 무조건 브라우저를 갱신하게 된다."/> -->
@@ -311,7 +312,7 @@
 		</column>
 		<column inputType="select">
 			<chooseOptionLabel value="-선택-" />
-			<eventPriority value="oneditend" /> event 하위호환을 위한 설정. SP2를 처음부터 개발하거나 SKT인 경우에는 이 속성을 추가한다.
+			<eventPriority value="oneditend" /> <!-- event 하위호환을 위한 설정. SP2를 처음부터 개발하거나 SKT인 경우에는 이 속성을 추가한다. -->
 		</column>
 		<column inputType="calendar">
 			<dataType value="date" />
@@ -321,6 +322,7 @@
 			<displayFormat valueType="yearMonthDateTimeSec" value="yyyy-MM-dd HH:mm:SS" />
 		</column>
 		<enterKeyMove value="none" />
+		<checkReadOnlyOnPaste value="true"/>	<!-- readOnly="true" 컬럼에 Ctrl(또는 cmd)+V를 통한 붙여넣기 불가 여부. [default: false, true]  --> 
 	</gridView>
 
 	<inputCalendar>

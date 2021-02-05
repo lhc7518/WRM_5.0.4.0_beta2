@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+        
+			scwin.onpageload = function() {
+				for(j=0;j<5;j++){
+					//debugger;
+					var gen2Idx = generator2.insertChild();  
+					//input1 에 값 설정   
+					var input1Obj = generator2.getChild( gen2Idx , "input1" );
+					input1Obj.setValue("input1_"+j);
+					//textbox2 에 값 설정   
+					var txtbox2Obj = generator2.getChild( gen2Idx , "textbox2" );
+					txtbox2Obj.setValue("textbox2_"+j);
+					
+				
+				}				
+			};
+			
+			scwin.onpageunload = function() {
+				
+			}; 
+
+			scwin.textbox1_onclick = function(e) {
+				var genIdx = this.getGeneratedIndex();
+				var txtbox1Obj = this.getGeneratedComponent("textbox1");
+				
+				alert(genIdx+"번째 txtbox1, click한 text값 : "+txtbox1Obj.getValue());
+				
+			};
+			
+			scwin.btnShow_onclick = function(e) {
+				
+				var genIdx = this.getGeneratedIndex();
+				var input1Obj = this.getGeneratedComponent("input1");
+				var btnShowObj = this.getGeneratedComponent("btnShow");
+				var btnHideObj = this.getGeneratedComponent("btnHide");
+				
+				alert(genIdx+"번째 input1, click한 input t값 : "+input1Obj.getValue());
+				
+				//show버튼 left위치+show버튼 width+hide버튼 width
+				var left =  btnShowObj.getPosition("left") + btnShowObj.getSize("width") + btnHideObj.getSize("width");
+				var top =  btnShowObj.getPosition("top");
+				
+				contextGroup.show();
+				contextGroup.setPosition( left , top );		
+					
+			
+			};
+			
+			scwin.btnHide_onclick = function(e) {
+				contextGroup.hide();
+			};
+		
+			scwin.gridBody_anchor406_onclick = function() {
+				alert("click menu1");
+			};
+			
+			scwin.gridBody_anchor4066_onclick = function() {
+				alert("click menu2");
+			};
+			
+			scwin.gridBody_anchor407_onclick = function() {
+				alert("click menu3");
+			};
+			
+			scwin.gridBody_anchor408_onclick = function() {
+				alert("click menu4");
+			};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+        	<xf:group id="contextGroup" style="position: absolute ;left:279px;width:100px;top:66px;z-index: 100;display:none;" class="">
+    		<xf:group id="grdBodyContentBox" class="" style="position: absolute;left:0px;top:0px;width:100%;">
+    			<w2:anchor id="gridBody_anchor406" label="" style="position: relative ;width:100px;background-color:#56FFE0;" class="" ev:onclick="scwin.gridBody_anchor406_onclick">
+    				<xf:label>menu1</xf:label>
+    			</w2:anchor>
+    			<w2:anchor id="gridBody_anchor4066" label="" style="position: relative ;width:100px;background-color:#56FFE0;" class="" ev:onclick="scwin.gridBody_anchor4066_onclick">
+    				<xf:label>menu2</xf:label>
+    			</w2:anchor>
+    			<div class="" />
+    			<w2:anchor class="" id="gridBody_anchor407" label="" style="position: relative ;width:100px;background-color:#56FFE0;" ev:onclick="scwin.gridBody_anchor407_onclick">
+    				<xf:label>menu3</xf:label>
+    			</w2:anchor>
+    			<w2:anchor class="" id="gridBody_anchor408" label="" style="position: relative ;width:100px;background-color:#56FFE0;" ev:onclick="scwin.gridBody_anchor408_onclick">
+    				<xf:label>menu4</xf:label>
+    			</w2:anchor>
+    		</xf:group>
+    	</xf:group>
+    	<xf:group tagname="table" id="table1" style="position: relative ;width:100%;margin-top:10px;" class="w2tb">
+    		<w2:attributes>
+    			<w2:summary></w2:summary>
+    		</w2:attributes>
+    		<xf:group tagname="colgroup">
+    			<xf:group style="width:25.00%" tagname="col"></xf:group>
+    			<xf:group style="width:25.00%" tagname="col"></xf:group>
+    			<xf:group style="width:25.00%" tagname="col"></xf:group>
+    			<xf:group style="width:25.00%" tagname="col"></xf:group>
+    		</xf:group>
+    		<w2:generator id="generator2" style="position: relative;width: 100%;height: 100px;" tagname="tbody">
+    			<xf:group tagname="tr">
+    				<xf:group style="" class="w2tb_th" tagname="th"></xf:group>
+    				<xf:group style="" class="w2tb_td" tagname="td">
+    					<xf:input id="input1" style="position: relative;width: 144px;height: 21px;float:left;"></xf:input>
+    					<xf:trigger type="button" id="btnShow" style="position: relative;width: 40px;height: 23px;float:left;" ev:onclick="scwin.btnShow_onclick">
+    						<xf:label><![CDATA[show]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger id="btnHide" style="position: relative;width: 40px;height: 23px;float:left;" type="button" ev:onclick="scwin.btnHide_onclick">
+    						<xf:label><![CDATA[hide]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    				<xf:group style="" class="w2tb_th" tagname="th"></xf:group>
+    				<xf:group style="" class="w2tb_td" tagname="td">
+    					<w2:textbox label="" id="textbox2" style="position: relative;width:100%;height: 23px;"></w2:textbox>
+    				</xf:group>
+    			</xf:group>
+    		</w2:generator>
+    	</xf:group>
+    	
+    </body>
+</html>
