@@ -1888,41 +1888,48 @@ com.data.createDataMap = function(dsId, colArr, typeArr, options) {
 
 
 /**
- * linkedDatalist를 동적으로 생성한다.  (2021-01-13 LHC ) 
+ * linkedDatalist를 동적으로 생성한다.
  *
  * @memberof com.data
- * @date 2021.01.13
+ * @date 2021.02.08
  * @param {String} dsId				생성 linkedDatalist의 아이디
- * @param {String} fromDsId		bind DataList의 아이디
- * @param {Object} conditionObj	조건Object (필터 조건, sort 조건) 
+ * @param {Object} conditionObj	조건Object (bind DataList 아이디, 필터 조건, sort 조건) 
+ * @param 	{String} conditionObj.fromDsId			(필수) 조건Object bind DataList 아이디
+ * @param 	{String} conditionObj.filterCondition		조건Object 필터 조건 
+ * @param 	{String} conditionObj.sortCondition		조건Object sort 조건 
  * @return {Object} dataCollection(dataList)
- * @author Inswave Systems
+ * @author Inswave Systems (LHC)
  * @example
-		var filterStr	= "col1 == 'N' && ( col2 >= '03' )";	//필터 조건
-		var sortStr	= "ASC('col1')";							//sort 조건
 		var conditionObj = {
-			filterCondition		: filterStr,
-			sortCondition		: sortStr
+			fromDsId				: "dlt_code"									//bind DataList 아이디 (필수)
+			,filterCondition		: "col1 == 'N' && ( col2 >= '03' )"		//필터 조건 
+			,sortCondition		: "ASC('col1')"								//sort 조건 
 		};
-		var dltObj = com.data.createLinkedDataList("dlt_linkedCode", "dlt_code" , conditionObj);
+		var dltObj = com.data.createLinkedDataList("dlt_linkedCode", conditionObj);
  */
-com.data.createLinkedDataList = function( dsId, fromDsId, conditionObj ) {
+com.data.createLinkedDataList = function( dsId, conditionObj ) {
 	try {
 		var dltObj = com.util.getComponent(dsId);
 		if (!com.util.isEmpty(dltObj)) {
 			$p.data.remove( dsId );
 		}		
+		
+		if ( typeof conditionObj == "undefined" || conditionObj == null 
+			|| typeof conditionObj.fromDsId == "undefined" || conditionObj.fromDsId == null || conditionObj.fromDsId == "" ) {
+			return null;
+		}		
 
+		var _fromDsId			= "";		//bind DataList 아이디 
 		var _filterCondition	= "";		//필터링 조건
 		var _sortCondition	= "";		//sort 조건 
 		
-		if ( typeof conditionObj != "undefined" ){
-			if ( typeof conditionObj.filterCondition != "undefined" ){
-				_filterCondition = conditionObj.filterCondition.replaceAll(" ","");		//빈여백 있으면 제대로 필터링 처리 안됨 
-			}
-			if ( typeof conditionObj.sortCondition != "undefined" ){
-				_sortCondition = conditionObj.sortCondition.replaceAll(" ","");
-			}
+		_fromDsId = conditionObj.fromDsId;
+
+		if ( typeof conditionObj.filterCondition != "undefined" ){
+			_filterCondition = conditionObj.filterCondition.replaceAll(" ","");		//빈여백 있으면 제대로 필터링 처리 안됨 
+		}
+		if ( typeof conditionObj.sortCondition != "undefined" ){
+			_sortCondition = conditionObj.sortCondition.replaceAll(" ","");
 		}
         
 		//옵션 확인 필요할듯함 
@@ -1930,7 +1937,7 @@ com.data.createLinkedDataList = function( dsId, fromDsId, conditionObj ) {
 			"baseNode"			: "list"
 			,"repeatNode"		: "map"
 			,"valueAttribute"	: ""
-			,"bind"				: fromDsId
+			,"bind"				: _fromDsId
 			,"filterCondition"	: _filterCondition
 			,"sortCondition"	: _sortCondition
         };
@@ -1950,20 +1957,20 @@ com.data.createLinkedDataList = function( dsId, fromDsId, conditionObj ) {
 
 
 /**
- * aliasDataList를 동적으로 생성한다.  (2021-01-15 LHC ) 
+ * aliasDataList를 동적으로 생성한다.
  *
  * @memberof com.data
  * @date 2021.01.13
  * @param {String} dsId					생성 aliasDatalist의 아이디
  * @param {Object} options				생성 option (scope는 필수) 
- * @param {String} options.scope			대상 부모페이지의 dataList 아이디 (상대 경로 지원 예: ../dataList1 , 절대 경로 지원 예: /wframe1/dataList1 )
- * @param {String} options.studioSrc		대상 부모페이지의 절대경로 (예: /cm/xml/header.xml )
+ * @param 	{String} options.scope			(필수) 대상 부모페이지의 dataList 아이디 (상대 경로 지원 예: ../dataList1 , 절대 경로 지원 예: /wframe1/dataList1 )
+ * @param 	{String} options.studioSrc		대상 부모페이지의 절대경로. 스튜디오 사용용도 (예: /cm/xml/header.xml )
  * @return {Object} dataCollection(dataList)
- * @author Inswave Systems
+ * @author Inswave Systems (LHC)
  * @example
 		var options = {
-			"scope"		: "../dataList1"
-			,"studioSrc"	: ""
+			scope			: "../dataList1"
+			,studioSrc	: ""
 		};
 		var dltObj = com.data.createAliasDataList("dlt_aliasCode", options);
  */
@@ -1975,7 +1982,7 @@ com.data.createAliasDataList = function( dsId, options ) {
 		}		
 		
 		if ( typeof options == "undefined" || options == null || typeof options.scope == "undefined" || options.scope == null || options.scope == "" ) {
-			return;
+			return null;
 		}	
 			
 		//옵션 확인 필요할듯함 
@@ -1999,16 +2006,16 @@ com.data.createAliasDataList = function( dsId, options ) {
 
 
 /**
- * dataList 에 동적으로 컬럼추가   (2021-01-22 LHC ) 
+ * dataList 에 동적으로 컬럼추가 
  *
  * @memberof com.data
- * @date 2021.01.22
+ * @date 2021.02.08
  * @param {Object} dataListObj				컬럼 추가 할 dataList Object 
  * @param {Object} columnInfo				추가 할 컬럼 정보 josn Object  
  * @param 	{String} columnInfo.id				추가 할 컬럼의 id 
  * @param 	{String} columnInfo.name			추가 할 컬럼의 name 
  * @param 	{String} columnInfo.datatype		추가 할 컬럼의 dataType
- * @author Inswave Systems
+ * @author Inswave Systems (LHC)
  * @example
 		var columnInfo = {
 			id 				: "GRP_CD",

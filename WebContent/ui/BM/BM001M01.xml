@@ -208,23 +208,27 @@
 		
 		scwin.selectedCodeGrpIdx = 0;
 		com.sbm.execute(sbm_commonGroup);
-/*		
+
+
+		
 		//aliasDataList 동적 생성 =========================================
 		var options = {
-			"scope"		: "../wfm_side/dlt_menu"
-			,"studioSrc"	: ""
+			scope			: "../wfm_side/dlt_menu"
+			//,studioSrc	: ""
 		};
 		var dltObj = com.data.createAliasDataList("dlt_aliasMenu", options);			
 		//========================================================= 
-*/		
+
+
+	
 		//linkedDataList 동적 생성 =========================================
-		var filterStr	= "";	//필터 조건
-		var sortStr	= "";							//sort 조건
 		var conditionObj = {
-			filterCondition		: filterStr,
-			sortCondition		: sortStr
+			fromDsId				: "dlt_commonGrp"	//bind DataList 아이디 (필수)
+			//,filterCondition		: ""						//필터 조건 
+			//,sortCondition		: ""						//sort 조건 
 		};
-		var dltObj = com.data.createLinkedDataList("dlt_linkedCode", "dlt_commonGrp" , conditionObj);		
+		var dltObj2 = com.data.createLinkedDataList("dlt_linkedCode", conditionObj);		
+		//=========================================================
 	};
 
 	/**
